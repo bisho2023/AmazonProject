@@ -35,9 +35,9 @@ const Search = () => {
     // }
     const productsRef = collection(db, "products");
     const fetchPost = async () => {
-        // const q = query(productsRef, where("name", "in", [search]));
+        const q = query(productsRef, where("name", "in", [search]));
         // const q = query(productsRef, where("name", "array-contains-any", [search]));
-        const q = query(productsRef, where("name", "array-contains", search));
+        // const q = query(productsRef, where("name", "array-contains", search));
 
 
         const querySnapshot = await getDocs(q);
