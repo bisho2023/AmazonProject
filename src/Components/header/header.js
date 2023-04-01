@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import "./header.css";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [search, setsearch] = useState("");
   const navigate = useNavigate();
+  const counter = useSelector((state) => state.count);
   const handelSubmit = (e) =>{
     e.preventDefault();
     navigate(`/search?name=${search}`);
@@ -71,6 +73,27 @@ const Header = () => {
                 <a className="nav-link text-white" href="#">
                   <strong>Orders</strong>
                 </a>
+              </li>
+              <li>
+              <span className="nv-b-item mx-2">
+            <NavLink className="nav-item" to="/cards">
+              <a className="nav-link text-white" href="cart.html">
+                <i
+                  className="fas fa-shopping-cart"
+                  style={{ fontSize: " 19pt;" }}
+                ></i>
+                Cart{" "}
+                <sup>
+                  <span
+                    className="badge badge-warning p-1 font-weight-bold"
+                    id="cartCounter"
+                  >
+                    {counter}
+                  </span>
+                </sup>
+              </a>
+            </NavLink>
+          </span>
               </li>
             </ul>
           </div>

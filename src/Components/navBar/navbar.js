@@ -140,7 +140,7 @@ const Navbar = () => {
               Your Amazon.eg
             </NavLink>
           </span>
-          <span className="nv-b-item mx-2">
+          {/* <span className="nv-b-item mx-2">
             <NavLink className="nav-item" to="/cards">
               <a className="nav-link text-white" href="cart.html">
                 <i
@@ -158,7 +158,7 @@ const Navbar = () => {
                 </sup>
               </a>
             </NavLink>
-          </span>
+          </span> */}
           {/* <span className="nv-b-item mx-2 w-25"><a href="#"><img src='./2PNG.PNG' /></a></span> */}
         </div>
       </div>
