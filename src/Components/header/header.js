@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,6 +42,7 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
+
           <div className="header">
             <Link to="/">
               <img className="header-logo" src="./header-logo.png" alt="logo-img" />
@@ -55,6 +57,22 @@ const Header = () => {
             </div>
             {/* <div className="header-nav">
               <Link to={!user && "/login"}>
+=======
+    <div className="header">
+      <Link to="/">
+        <img className="header-logo" src="../images/logo2s.png" alt="logo-img" />
+      </Link>
+      <div className="header-search">
+        <input className="header-searchInput" type="text" />
+        <img
+          src="./searchIcon.png"
+          alt="search icon"
+          className="header-searchIcon"
+        />
+      </div>
+      {/* <div className="header-nav">
+        <Link to={!user && "/login"}>
+ 161cda9df25d4c108288f9163593b8d3b1f56c9a
           <div className="header-option" onClick={handleAuthentication}>
             <div className="header-optionLineOne">
               Hello {user ? `${user.email}` : "Guest"}
@@ -75,6 +93,7 @@ const Header = () => {
               <div className="header-optionLineOne">Your</div>
               <div className="header-optionLineTwo">Prime</div>
             </div>
+
 
             <span className="nv-b-item mx-2">
               <NavLink className="nav-item" to="/cards">
@@ -135,8 +154,8 @@ const Header = () => {
                 </span>
               </li>
             </ul>
-          </div>
-        </div>
+          </div >
+        </div >
       </nav >
     </div >
   );
