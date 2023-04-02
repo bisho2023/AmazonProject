@@ -67,7 +67,7 @@ const Navbar = () => {
               }
               to="/computer"
             >
-              Copmuter
+              Computer
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
