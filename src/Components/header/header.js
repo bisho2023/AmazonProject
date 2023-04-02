@@ -20,7 +20,7 @@ const Header = () => {
           <i className="fa fa-location-dot deliver-icon mr-1"></i>
           <a className="navbar-brand deliver" href="#">
             Deliver to
-            <br /> <strong>ASSIUT</strong>
+            <br /> <strong>SOHAG</strong>
           </a>
           <button
             className="navbar-toggler"
