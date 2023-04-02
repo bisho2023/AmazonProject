@@ -41,20 +41,20 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-    <div className="header">
-      <Link to="/">
-        <img className="header-logo" src="./header-logo.png" alt="logo-img" />
-      </Link>
-      <div className="header-search">
-        <input className="header-searchInput" type="text" />
-        <img
-          src="./searchIcon.png"
-          alt="search icon"
-          className="header-searchIcon"
-        />
-      </div>
-      {/* <div className="header-nav">
-        <Link to={!user && "/login"}>
+          <div className="header">
+            <Link to="/">
+              <img className="header-logo" src="./header-logo.png" alt="logo-img" />
+            </Link>
+            <div className="header-search">
+              <input className="header-searchInput" type="text" />
+              <img
+                src="./searchIcon.png"
+                alt="search icon"
+                className="header-searchIcon"
+              />
+            </div>
+            {/* <div className="header-nav">
+              <Link to={!user && "/login"}>
           <div className="header-option" onClick={handleAuthentication}>
             <div className="header-optionLineOne">
               Hello {user ? `${user.email}` : "Guest"}
@@ -63,39 +63,41 @@ const Header = () => {
               {user ? "Sign Out" : "Sign In"}
             </div>
           </div>
-        </Link> */}
-      <Link to="/orders">
-        <div className="header-option">
-          <div className="header-optionLineOne">Returns</div>
-          <div className="header-optionLineTwo">& Orders</div>
-        </div>
-      </Link>
+          </Link> */}
+            <Link to="/orders">
+              <div className="header-option">
+                <div className="header-optionLineOne">Returns</div>
+                <div className="header-optionLineTwo">& Orders</div>
+              </div>
+            </Link>
 
-      <div className="header-option">
-        <div className="header-optionLineOne">Your</div>
-        <div className="header-optionLineTwo">Prime</div>
-      </div>
+            <div className="header-option">
+              <div className="header-optionLineOne">Your</div>
+              <div className="header-optionLineTwo">Prime</div>
+            </div>
 
-      <span className="nv-b-item mx-2">
-        <NavLink className="nav-item" to="/cards">
-          <a className="nav-link text-white" href="cart.html">
-            <i
-              className="fas fa-shopping-cart"
-              style={{ fontSize: " 19pt;" }}
-            ></i>
-            Cart{" "}
-            <sup>
-              <span
-                className="badge badge-warning p-1 font-weight-bold"
-                id="cartCounter"
-              >
-              
-                {counter}
-              </span>
-            </sup>
-          </a>
-        </NavLink>
-     
+            <span className="nv-b-item mx-2">
+              <NavLink className="nav-item" to="/cards">
+                <a className="nav-link text-white" href="cart.html">
+                  <i
+                    className="fas fa-shopping-cart"
+                    style={{ fontSize: " 19pt;" }}
+                  ></i>
+                  Cart{" "}
+                  <sup>
+                    <span
+                      className="badge badge-warning p-1 font-weight-bold"
+                      id="cartCounter"
+                    >
+
+                      {counter}
+                    </span>
+                  </sup>
+                </a>
+              </NavLink>
+            </span>
+            <ul>
+              <li>
                 <a
                   id="noLogin"
                   className="navbar-brand deliver"
@@ -112,34 +114,34 @@ const Header = () => {
                 </a>
               </li>
               <li>
-              <span className="nv-b-item mx-2">
-            <NavLink className="nav-item" to="/cards">
-              <a className="nav-link text-white" href="cart.html">
-                <i
-                  className="fas fa-shopping-cart"
-                  style={{ fontSize: " 19pt;" }}
-                ></i>
-                Cart{" "}
-                <sup>
-                  <span
-                    className="badge badge-warning p-1 font-weight-bold"
-                    id="cartCounter"
-                  >
-                    {counter}
-                  </span>
-                </sup>
-              </a>
-            </NavLink>
-          </span>
+                <span className="nv-b-item mx-2">
+                  <NavLink className="nav-item" to="/cards">
+                    <a className="nav-link text-white" href="cart.html">
+                      <i
+                        className="fas fa-shopping-cart"
+                        style={{ fontSize: " 19pt;" }}
+                      ></i>
+                      Cart{" "}
+                      <sup>
+                        <span
+                          className="badge badge-warning p-1 font-weight-bold"
+                          id="cartCounter"
+                        >
+                          {counter}
+                        </span>
+                      </sup>
+                    </a>
+                  </NavLink>
+                </span>
               </li>
             </ul>
-      //     </div>
-      //   </div>
-      // </nav>
-      //  </div>
+          </div>
+        </div>
+      </nav >
+    </div >
   );
 };
 export default Header;
 
-   
+
 
