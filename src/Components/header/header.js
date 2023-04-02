@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +20,7 @@ const Header = () => {
   return (
     <div className="header">
       <Link to="/">
-        <img className="header-logo" src="./header-logo.png" alt="logo-img" />
+        <img className="header-logo" src="../images/logo2s.png" alt="logo-img" />
       </Link>
       <div className="header-search">
         <input className="header-searchInput" type="text" />
@@ -66,30 +67,33 @@ const Header = () => {
                 className="badge badge-warning p-1 font-weight-bold"
                 id="cartCounter"
               >
-              
+
                 {counter}
               </span>
             </sup>
           </a>
         </NavLink>
-     
-                <a
-                  id="noLogin"
-                  className="navbar-brand deliver"
-                  href="/signup"
-                >
-                  Hello Sign in <br />
-                  <b style={{ lineHeight: " 1.5" }}>Accounts & Lists</b>
-                </a>
-                <a id="logged" className="navbar-brand deliver" href="#"></a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link text-white" href="#">
-                  <strong>Orders</strong>
-                </a>
-              </li>
-              <li>
-              <span className="nv-b-item mx-2">
+      </span>
+      <ul>
+        <li>
+          <a
+            id="noLogin"
+            className="navbar-brand deliver"
+            href="/login"
+          >
+
+            Hello Sign in <br />
+            <b style={{ lineHeight: " 1.5" }}>Accounts & Lists</b>
+          </a>
+          <a id="logged" className="navbar-brand deliver" href="#"></a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link text-white" href="#">
+            <strong>Orders</strong>
+          </a>
+        </li>
+        <li>
+          <span className="nv-b-item mx-2">
             <NavLink className="nav-item" to="/cards">
               <a className="nav-link text-white" href="cart.html">
                 <i
@@ -108,15 +112,14 @@ const Header = () => {
               </a>
             </NavLink>
           </span>
-              </li>
-            </ul>
-      //     </div>
-      //   </div>
-      // </nav>
-      //  </div>
+        </li>
+      </ul>
+    //     </div>
+    //   </div>
+    // </nav>
+    //  </div>
   );
 };
 export default Header;
-
    
 
