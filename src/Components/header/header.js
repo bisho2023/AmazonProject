@@ -6,8 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 // import searchIcon from "../images/icons/searchIcon.png";
 // import shoopingCart from "../images/icons/shopping-cart.png";
 import "./header.css";
+import { auth } from "../../firebase";
+import { useAuth } from "../../context/GlobalProvider";
 
 const Header = () => {
+  const handleAuthentication = () => {
+    auth.signOut();
+  };
+   const { user } = useAuth();
   const counter = useSelector((state) => state.count);
   const [search, setsearch] = useState("");
   const navigate = useNavigate();
@@ -95,7 +101,8 @@ const Header = () => {
           className="header-searchIcon"
         />
       </div>
-      {/* <div className="header-nav">
+      
+      <div className="header-nav">
         <Link to={!user && "/login"}>
           <div className="header-option" onClick={handleAuthentication}>
             <div className="header-optionLineOne">
@@ -105,7 +112,8 @@ const Header = () => {
               {user ? "Sign Out" : "Sign In"}
             </div>
           </div>
-        </Link> */}
+        </Link>
+        </div>
 
       <Link to="/orders">
         <div className="header-option">
