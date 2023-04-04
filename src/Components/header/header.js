@@ -101,12 +101,19 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+
 // import Logo from "../images/header-logo.png";
 // import searchIcon from "../images/icons/searchIcon.png";
 // import shoopingCart from "../images/icons/shopping-cart.png";
 import "./header.css";
+import { auth } from "../../firebase";
+ import { useAuth } from "../../context/GlobalProvider";
 
 const Header = () => {
+  const handleAuthentication = () => {
+        auth.signOut();
+      };
+       const { user } = useAuth();
   const counter = useSelector((state) => state.count);
   const [search, setsearch] = useState("");
   const navigate = useNavigate();
@@ -142,18 +149,19 @@ const Header = () => {
           />
         </div>
         {/* {userName} */}
-        {/* <div className="header-nav">
-        <Link to={!userName && "/login"}>
-          <div className="header-option" onClick={handleAuthentication}>
-            <div className="header-optionLineOne">
-              Hello {userName ? `${userName.email}` : "Guest"}
-            </div>
-            <div className="header-optionLineTwo">
-              {user ? "Sign Out" : "Sign In"}
-            </div>
-          </div>
-        </Link>
-      </div> */}
+       
+       <div className="header-nav">
+         <Link to={!user && "/login"}>
+           <div className="header-option" onClick={handleAuthentication}>
+             <div className="header-optionLineOne">
+               Hello {user ? `${user.email}` : "Guest"}
+             </div>
+             <div className="header-optionLineTwo">
+               {user ? "Sign Out" : "Sign In"}
+             </div>
+           </div>
+         </Link>
+         </div>
 
         <Link to="/orders">
           <div className="header-option">
