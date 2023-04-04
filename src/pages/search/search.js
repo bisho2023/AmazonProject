@@ -45,7 +45,7 @@ const Search = () => {
     }
     useEffect(() => { 
         fetchPost();
-    }, [])
+    }, [search])
     return (
         <div className="container">
 
