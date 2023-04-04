@@ -82,7 +82,6 @@ export const Signup = () => {
             setDoc(userRef, {
                 userId: credentials.user.uid,
                 email: credentials.user.email,
-               
                 username: username.toLowerCase().trim()
             })
                 .then(() => {
