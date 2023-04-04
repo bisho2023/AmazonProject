@@ -43,7 +43,7 @@ const Search = () => {
         })
         setsearchdata(resData)
     }
-    useEffect(() => {
+    useEffect(() => { 
         fetchPost();
     }, [])
     return (
