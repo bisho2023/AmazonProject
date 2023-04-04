@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import changeCards from "../../store/action";
 import { changeCounter } from "../../store/action";
 import "./cards.css";
+import { useAuth } from "../../context/GlobalProvider";
 const Cards = () => {
+  const { user } = useAuth();
   const getBasketTotal = (cards) =>
     cards.reduce((amount, item) => {
       return amount + item.price;
@@ -14,7 +16,9 @@ const Cards = () => {
   return (
     <>
       <div className="container-fluid ">
-        <h3 className="hello">Hello ahmed</h3>
+     <h3>Hello, {user ? `${user.email}` : "Guest"}</h3>
+     
+        {/* <h3 className="hello">Hello ahmed</h3> */}
         <h2 className="checkout-title">Your shopping Basket</h2>
         <hr />
         <div className="row ">
