@@ -6,6 +6,7 @@ import "./cards.css";
 import { useAuth } from "../../context/GlobalProvider";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 const Cards = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -16,6 +17,11 @@ const Cards = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
+  useEffect(()=>{
+ localStorage.getItem("card",JSON.stringify(cards))
+
+  },[cards]);
+
   return (
     <>
       <div className="container-fluid ">
