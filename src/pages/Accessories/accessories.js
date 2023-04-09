@@ -22,12 +22,17 @@ const Accessories = () => {
 //         }) 
 // }
 const productsRef = collection(db, "products");
+const categoriesRef = collection(db, "category");
+
   const fetchPost = async ()=>{
     const q = query(productsRef, where("category", "==", "accessory"));
+    // const cat = query(productsRef,);
+
     const querySnapshot = await getDocs(q);
      const products = []; 
      querySnapshot.forEach((doc) => { products.push(doc.data()); });
      setaccessoriy(products);
+     console.log(categoriesRef);
   }
 
 
