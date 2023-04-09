@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import CountrySelect from 'react-bootstrap-country-select';
 // import Accordion from 'react-bootstrap/Accordion';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './checkout.css'
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { useSelector } from 'react-redux';
@@ -11,6 +13,7 @@ import { db } from '../../firebase';
 
 
 const CheckOut = () => {
+    let checker = true;
     const { user } = useAuth();
     const getBasketTotal = (cards) =>
         cards.reduce((amount, item) => {
@@ -18,22 +21,31 @@ const CheckOut = () => {
         }, 0);
     const cards = useSelector((state) => state.card);
     // const [value, setValue] = useState(null)
-    useEffect(() => {
-        console.log(cards);
-    }, []);
+
     const handelOrder = () => {
         const userRef = doc(db, 'order', user.uid);
         setDoc(userRef, {
             userId: user.uid,
             email: user.email,
             totalprice: getBasketTotal(cards),
-            products:[...cards]
+            products: [...cards],
+
         })
         console.log("success");
     }
+
+    const handelForm = (event) => {
+        event.preventDefault();
+        checker = true;
+        console.log("success");
+    }
+
+    // useEffect(() => {
+    //     checker = true;
+    // }, [checker]);
     return (
         <div className='container-fluid my-3'>
-            <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button>
+            {/* <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button> */}
             <div className='row'>
                 <div className="accordion col-lg-8 col-md-6" id="accordionExample">
                     <div className="accordion-item">
@@ -45,31 +57,30 @@ const CheckOut = () => {
                         <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div className="accordion-body w-50 mx-3">
 
-                                <form className='form-group' autoComplete="off" >
-                                    {/* <CountrySelect  { ...value }onChange = { setValue }/> */}
+                                <form className='form-group' autoComplete="off" onSubmit={handelForm} >
                                     <label>User Name</label>
-                                    <input type="text" className='form-control' required></input>
+                                    <input type="text" className='form-control' required />
                                     <br></br>
                                     <label>Mobile</label>
-                                    <input type="number" className='form-control' required></input>
+                                    <input type="number" className='form-control' required />
                                     <br></br>
                                     <label>Street Name</label>
-                                    <input type="text" className='form-control' required></input>
+                                    <input type="text" className='form-control' required />
                                     <br></br>
                                     <label>Build name/no</label>
-                                    <input type="text" className='form-control' required></input>
+                                    <input type="text" className='form-control' required />
                                     <br></br>
                                     <label>City/Area</label>
-                                    <input type="text" className='form-control' required></input>
+                                    <input type="text" className='form-control' required />
                                     <br></br>
                                     <label>District</label>
-                                    <input type="text" className='form-control' required></input>
+                                    <input type="text" className='form-control' required />
                                     <br></br>
                                     <label>Governorate</label>
-                                    <input type="text" className='form-control' required></input>
+                                    <input type="text" className='form-control' required />
                                     <br></br>
                                     <label>Nearest landmark</label>
-                                    <input type="text" className='form-control' required></input>
+                                    <input type="text" className='form-control' required />
                                     <br></br>
                                     <div className='btn-box'>
                                         <button type="submit" className='btn btn-warning btn-md'>Add Address</button>
@@ -86,24 +97,31 @@ const CheckOut = () => {
                         </h2>
                         <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div className="accordion-body w-50">
-                                <PayPalScriptProvider options={{ "client-id": "Ad2_pXcY1MLRKJPse7snylSl0592iEOcuRPyI1VSakX2RkqkYHop9867O7wNqOKwW2F3lu2n90vye1Ho" }}>
-                                    <PayPalButtons createOrder={(data, action) => {
-                                        return action.order.create({
-                                            purchase_units: [{
-                                                amount: {
-                                                    value: (getBasketTotal(cards))
+                                {checker ? (
+                                    <PayPalScriptProvider options={{ "client-id": "Ad2_pXcY1MLRKJPse7snylSl0592iEOcuRPyI1VSakX2RkqkYHop9867O7wNqOKwW2F3lu2n90vye1Ho" }}>
+                                        <PayPalButtons createOrder={(data, action) => {
+                                            return action.order.create({
+                                                purchase_units: [{
+                                                    amount: {
+                                                        value: (getBasketTotal(cards))
+                                                    },
                                                 },
+                                                ],
                                             },
-                                            ],
-                                        },
-                                        );
-                                    }}
-                                        onApprove={(data, action) => {
-                                            return action.order.capture().then((details) => {
-                                                alert("transaction is completed bt");
-                                            })
-                                        }} />
-                                </PayPalScriptProvider>
+                                            );
+                                        }}
+                                            onApprove={(data, action) => {
+                                                return action.order.capture().then((details) => {
+                                                    handelOrder();
+                                                    toast.success('Transaction is completed', {
+                                                        position: toast.POSITION.TOP_CENTER
+                                                    });
+                                                })
+                                            }} />
+                                    </PayPalScriptProvider>
+                                ) : (
+                                    <h2>you must enter Address Form</h2>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -133,7 +151,7 @@ const CheckOut = () => {
                             <input type="checkbox" /> This order contains a gift
                         </small>
                         <hr />
-                        <h2 className='danger'>Order Total : {getBasketTotal(cards) }</h2>
+                        <h2 className='danger'>Order Total : {getBasketTotal(cards)}</h2>
                     </div>
                 </div>
 
