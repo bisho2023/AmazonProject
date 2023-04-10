@@ -11,7 +11,6 @@ import { useAuth } from '../../context/GlobalProvider';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
-
 const CheckOut = () => {
     let checker = true;
     const { user } = useAuth();
