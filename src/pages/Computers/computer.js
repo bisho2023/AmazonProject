@@ -6,7 +6,7 @@ import { db } from '../../firebase';
 
 
 const Computer = () => {
-  let lang = "ar"
+  let lang = "en"
   const [Computurs, setComputurs] = useState([]);
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);

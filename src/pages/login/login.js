@@ -1,31 +1,32 @@
-import React,{useState} from 'react'
-import {Link, } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, } from 'react-router-dom'
 
 import { useNavigate } from "react-router-dom";
 import { auth } from '../../firebase';
 import { signInWithEmailAndPassword } from '@firebase/auth';
+import "./login.css"
 export const Login = () => {
     const navigate = useNavigate();
-   
-    const [email, setEmail]=useState('');
-    const [password, setPassword]=useState('');
 
-    const [errorMsg, setErrorMsg]=useState('');
-    const [successMsg, setSuccessMsg]=useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleLogin=(e)=>{
+    const [errorMsg, setErrorMsg] = useState('');
+    const [successMsg, setSuccessMsg] = useState('');
+
+    const handleLogin = (e) => {
         e.preventDefault();
-         console.log(email, password);
-       signInWithEmailAndPassword(auth,email,password).then(()=>{
+        console.log(email, password);
+        signInWithEmailAndPassword(auth, email, password).then(() => {
             setSuccessMsg('Login Successfull. You will now automatically get redirected to Home page');
             setEmail('');
             setPassword('');
             setErrorMsg('');
-            setTimeout(()=>{
+            setTimeout(() => {
                 setSuccessMsg('');
                 navigate('/');
-            },3000)
-        }).catch(error=>setErrorMsg(error.message));
+            }, 3000)
+        }).catch(error => setErrorMsg(error.message));
     }
 
     return (
@@ -59,5 +60,5 @@ export const Login = () => {
                 <div className='error-msg'>{errorMsg}</div>                
             </>}
         </div>
-    )
+          )
 }
