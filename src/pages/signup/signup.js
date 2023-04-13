@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@firebase/auth';
 import { Link } from "react-router-dom";
 import { auth, db, fs } from '../../firebase';
 import { useState } from 'react';
@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-import { addDoc, collection, getDocs, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, getDocs, doc, setDoc } from "@firebase/firestore";
 
 export const Signup = () => {
 
@@ -70,13 +70,6 @@ export const Signup = () => {
         e.preventDefault();
         console.log(username, email, password);
         createUserWithEmailAndPassword(auth, email, password).then(async (credentials) => {
-            // console.log(credentials.user.uid);
-            // addDoc(collection(db, "users"), {
-            //     fullName: fullName,
-            //     email: email,
-            //     password: password,
-            //     uid: credentials.user.uid,
-            // })
             const userRef = doc(db, 'users', credentials.user.uid);
             console.log(credentials.user.uid);
             setDoc(userRef, {
