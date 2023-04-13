@@ -6,6 +6,7 @@ import { db } from '../../firebase';
 
 
 const Computer = () => {
+  let lang = "ar"
   const [Computurs, setComputurs] = useState([]);
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
@@ -13,22 +14,30 @@ const Computer = () => {
 
   const dispatch = useDispatch();
 
-//   const fetchPost = async () => {
-//     await getDocs(collection(db, "Computurs"))
-//         .then((querySnapshot)=>{              
-//             const newData = querySnapshot.docs
-//                 .map((doc) => ({...doc.data(), id:doc.id }));
-//                 setComputurs(newData);                
-//             console.log(Computurs, newData);
-//         }) 
-// }
-const productsRef = collection(db, "products");
-  const fetchPost = async ()=>{
-    const q = query(productsRef, where("category", "==", "computer"));
-    const querySnapshot = await getDocs(q);
-     const products = []; 
-     querySnapshot.forEach((doc) => { products.push(doc.data()); });
-     setComputurs(products);
+  //   const fetchPost = async () => {
+  //     await getDocs(collection(db, "Computurs"))
+  //         .then((querySnapshot)=>{              
+  //             const newData = querySnapshot.docs
+  //                 .map((doc) => ({...doc.data(), id:doc.id }));
+  //                 setComputurs(newData);                
+  //             console.log(Computurs, newData);
+  //         }) 
+  // }
+  const productsRef = collection(db, "products");
+  const fetchPost = async () => {
+    if (lang == "en") {
+      const q = query(productsRef, where("category", "==", "computer"));
+      const querySnapshot = await getDocs(q);
+      const products = [];
+      querySnapshot.forEach((doc) => { products.push(doc.data()); });
+      setComputurs(products);
+    } else if(lang == "ar") {
+      const q = query(productsRef, where("lang", "==", "ar"));
+      const querySnapshot = await getDocs(q);
+      const products = [];
+      querySnapshot.forEach((doc) => { products.push(doc.data()); });
+      setComputurs(products);
+    }
   }
   const categoryRef = collection(db, "category");
   const fetchcat = async () => {
@@ -41,11 +50,11 @@ const productsRef = collection(db, "products");
   }
 
 
-useEffect(()=>{
-  fetchPost();
-  fetchcat();
+  useEffect(() => {
+    fetchPost();
+    fetchcat();
 
-}, [])
+  }, [])
 
 
 
@@ -68,19 +77,19 @@ useEffect(()=>{
   return (
     <div className="container">
       <div class="row row-cols-1 row-cols-md-3 g-4">
-      {categories.map((cat, index) => {
+        {categories.map((cat, index) => {
           return (
             <div key={index}>
               <h1>{cat.name}</h1>
-            <img
-              className="card-img-top "
-              src={cat.image}
-              alt="Card image cap"
-            />
+              <img
+                className="card-img-top "
+                src={cat.image}
+                alt="Card image cap"
+              />
             </div>
           )
         })}
-        {Computurs.map((prd,index) => {
+        {Computurs.map((prd, index) => {
           return (
             <div class="col-md-4 my-3" key={index}>
               <div class="card">
@@ -90,9 +99,12 @@ useEffect(()=>{
                   alt="Card image cap"
                 />
                 <div class="card-body">
-                  
+
                   <h5 className="card-title">{prd.name}</h5>
-                  <p className="card-text"><strong>Description :</strong>  {prd.description}</p>
+                  <p className="card-text">
+                    <strong>Description :</strong>
+                    {prd.description}
+                  </p>
                   <h3>Price : {prd.price}</h3>
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <button
