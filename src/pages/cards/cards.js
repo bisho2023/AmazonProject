@@ -43,7 +43,7 @@ const Cards = () => {
                       <strong> {prd.price}</strong>
                     </p>
 
-                    <button
+                    <button style={{  fontSize:"13px",borderWidth:"1px",borderRadius:"8px",borderStyle:"solid",padding:"0 10px 0 11px"}}
                       onClick={() => {
                         let index = cards.findIndex(
                           (ele) => ele.name === prd.name
