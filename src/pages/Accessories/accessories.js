@@ -90,7 +90,7 @@ const Accessories = () => {
                   src={prd.image}
                   alt="Card image cap"
                 />
-                <div class="card-body">
+              <div class="card-body">
 
                   <h5 className="card-title">{prd.name}</h5>
                   <p className="card-text"><strong>Description :</strong>  {prd.description}</p>
