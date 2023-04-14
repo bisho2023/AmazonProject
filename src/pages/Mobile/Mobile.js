@@ -83,8 +83,8 @@ const Mobile = () => {
                   <h5 className="card-title">{prd.name}</h5>
                   <p className="card-text"><strong>Description :</strong> {prd.description}</p>
                   <h3>Price : {prd.price}</h3>
-                  <button
-                    className="btn btn-primary"
+                  <button style={{  fontSize:"14px",borderWidth:"3px",borderRadius:"10px",borderStyle:"solid",padding:"0 20px 0 20px"}}
+                    className="btn btn-warning"
                     onClick={() => {
                       dispatch(changeCards([...cards, prd]));
                       dispatch(changeCounter(counter + 1));
