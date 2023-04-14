@@ -6,7 +6,7 @@ const Navbar = () => {
   const counter = useSelector((state) => state.count);
   return (
     <div className="container-fluid pt-5">
-      <div className="row">
+      <div className="row  position-relative">
         <div className="col-12 nav-butt">
           <span className="nv-b-item mx-2">
             <strong>
@@ -141,14 +141,14 @@ const Navbar = () => {
             </NavLink>
           </span>
 
-          <span className="nv-b-item mx-2">
+          <span>
             <NavLink
               style={({ isActive }) =>
                 isActive ? { color: "orange" } : { color: "white" }
               }
               to="assd"
             >
-              <img src={edd} style={{ marginLeft: "9.7rem" }} />
+              <img src={edd} style={{ marginLeft: "10rem" }} />
             </NavLink>
           </span>
         </div>
