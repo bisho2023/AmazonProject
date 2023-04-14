@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import edd from "../images/3eed.jpg";
 const Navbar = () => {
   const counter = useSelector((state) => state.count);
   return (
@@ -138,6 +138,17 @@ const Navbar = () => {
               to="assd"
             >
               Your Amazon.eg
+            </NavLink>
+          </span>
+
+          <span className="nv-b-item mx-2">
+            <NavLink
+              style={({ isActive }) =>
+                isActive ? { color: "orange" } : { color: "white" }
+              }
+              to="assd"
+            >
+              <img src={edd} style={{ marginLeft: "9.7rem" }} />
             </NavLink>
           </span>
         </div>
