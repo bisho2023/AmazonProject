@@ -162,7 +162,7 @@ const Navbar = () => {
               style={({ isActive }) =>
                 isActive ? { color: "orange" } : { color: "white" }
               }
-              to="asd"
+              to="/help"
             >
               {t('help_page')}
             </NavLink>
