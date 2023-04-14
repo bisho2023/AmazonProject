@@ -1,10 +1,42 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./bootstrap.css";
 import "./style.css";
 
 
+
+
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+const languages = [
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb',
+  },
+  {
+    code: 'ar',
+    name: 'العربية',
+    dir: 'rtl',
+    country_code: 'sa',
+  },
+]
+
+
 const Home = () => {
 
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    console.log('Setting page stuff')
+    document.body.dir = currentLanguage.dir || 'ltr'
+    document.title = t('app_title')
+  }, [currentLanguage, t])
+
+  
   return (
     <>
       <section className="container-fluid p-0 ">
@@ -75,7 +107,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card ">
-                    Try Prime FREE for 30 days and shop Ramadan Sale deals
+                    {t("prime_free")}
                   </h2>
                 </div>
                 <div className="d-flex">
@@ -89,7 +121,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b fw-bold">
-                        Prime exclusive deals
+                      {t("prime_exclusive")}
                       </span>
                     </a>
                   </div>
@@ -103,7 +135,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b ">
-                        Extra 10% off* up to 150 EGP
+                        {t("extra_disc")}
                       </span>
                     </a>
                   </div>
@@ -120,7 +152,7 @@ const Home = () => {
                       </div>
 
                       <span className="card-b fw-bold">
-                        FREE shipping on all deals
+                        {t("free_shipping")}
                       </span>
                     </a>
                   </div>
@@ -134,7 +166,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b ">
-                        Award-winning movies and TV shows
+                       {t("aword_tv")}
                       </span>
                     </a>
                   </div>
@@ -142,7 +174,7 @@ const Home = () => {
 
                 <div>
                   <a href="#" className="card-a text-decoration-none">
-                    Try Prime FREE
+                    {t("try_prime")}
                   </a>
                 </div>
               </div>
@@ -151,7 +183,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                    {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -166,8 +198,8 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                    See more
+                  <a  href="#" className="card-a text-decoration-none">
+                   {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -177,7 +209,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card ">
-                    Ramadan Sale | Basics | Low Prices
+                    {t("ramdan_sale")}
                   </h2>
                 </div>
                 <div className="d-flex ">
@@ -190,7 +222,7 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b fw-bold">Men's Underwear</span>
+                      <span className="card-b fw-bold">{t("men_under")}</span>
                     </a>
                   </div>
                   <div>
@@ -202,7 +234,7 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b ">Women's Underwear</span>
+                      <span className="card-b ">{t("women_under")}</span>
                     </a>
                   </div>
                 </div>
@@ -217,7 +249,7 @@ const Home = () => {
                         />
                       </div>
 
-                      <span className="card-b fw-bold ">Men's Pyjamas</span>
+                      <span className="card-b fw-bold ">{t("men_pyj")}</span>
                     </a>
                   </div>
                   <div>
@@ -229,14 +261,14 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b ">Women's Pyjamas</span>
+                      <span className="card-b ">{t("women_pyj")}</span>
                     </a>
                   </div>
                 </div>
 
                 <div>
                   <a href="#" className="card-a text-decoration-none ">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -246,7 +278,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                  {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -262,7 +294,7 @@ const Home = () => {
 
                 <div className="">
                   <a href="#" className="card-a text-decoration-none">
-                    Discover more
+                   {t("discover_more")}
                   </a>
                 </div>
               </div>
@@ -272,7 +304,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card ">
-                    Try Prime FREE for 30 days and shop Ramadan Sale deals
+                  {t("prime_free")}
                   </h2>
                 </div>
                 <div className="d-flex">
@@ -286,7 +318,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b fw-bold">
-                        Prime exclusive deals
+                      {t("prime_exclusive")}
                       </span>
                     </a>
                   </div>
@@ -300,7 +332,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b ">
-                        Extra 10% off* up to 150 EGP
+                      {t("extra_disc")}
                       </span>
                     </a>
                   </div>
@@ -317,7 +349,7 @@ const Home = () => {
                       </div>
 
                       <span className="card-b fw-bold">
-                        FREE shipping on all deals
+                      {t("free_shipping")}
                       </span>
                     </a>
                   </div>
@@ -331,7 +363,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b ">
-                        Award-winning movies and TV shows
+                      {t("aword_tv")}
                       </span>
                     </a>
                   </div>
@@ -339,7 +371,7 @@ const Home = () => {
 
                 <div>
                   <a href="#" className="card-a text-decoration-none">
-                    Try Prime FREE
+                  {t("try_prime")}
                   </a>
                 </div>
               </div>
@@ -348,7 +380,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                  {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -364,7 +396,7 @@ const Home = () => {
 
                 <div className="">
                   <a href="#" className="card-a text-decoration-none">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -374,7 +406,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card ">
-                    Ramadan Sale | Basics | Low Prices
+                  {t("ramdan_sale")}
                   </h2>
                 </div>
                 <div className="d-flex ">
@@ -387,7 +419,7 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b fw-bold">Men's Underwear</span>
+                      <span className="card-b fw-bold">{t("men_under")}</span>
                     </a>
                   </div>
                   <div>
@@ -399,7 +431,7 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b ">Women's Underwear</span>
+                      <span className="card-b ">{t("women_under")}</span>
                     </a>
                   </div>
                 </div>
@@ -414,7 +446,7 @@ const Home = () => {
                         />
                       </div>
 
-                      <span className="card-b fw-bold ">Men's Pyjamas</span>
+                      <span className="card-b fw-bold ">{t("men_pyj")}</span>
                     </a>
                   </div>
                   <div>
@@ -426,14 +458,14 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b ">Women's Pyjamas</span>
+                      <span className="card-b ">{t("women_pyj")}</span>
                     </a>
                   </div>
                 </div>
 
                 <div>
                   <a href="#" className="card-a text-decoration-none ">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -443,7 +475,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                  {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -459,7 +491,7 @@ const Home = () => {
 
                 <div className="">
                   <a href="#" className="card-a text-decoration-none">
-                    Discover more
+                  {t("discover_more")}
                   </a>
                 </div>
               </div>
@@ -469,7 +501,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                  {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -485,7 +517,7 @@ const Home = () => {
 
                 <div className="">
                   <a href="#" className="card-a text-decoration-none">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -495,7 +527,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                  {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -511,7 +543,7 @@ const Home = () => {
 
                 <div className="">
                   <a href="#" className="card-a text-decoration-none">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -521,7 +553,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                  {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -537,7 +569,7 @@ const Home = () => {
 
                 <div className="">
                   <a href="#" className="card-a text-decoration-none">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -547,7 +579,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card ">
-                    Ramadan Sale | Basics | Low Prices
+                  {t("ramdan_sale")}
                   </h2>
                 </div>
                 <div className="d-flex ">
@@ -560,7 +592,7 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b fw-bold">Men's Underwear</span>
+                      <span className="card-b fw-bold">{t("men_under")}</span>
                     </a>
                   </div>
                   <div>
@@ -572,7 +604,7 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b ">Women's Underwear</span>
+                      <span className="card-b ">{t("women_under")}</span>
                     </a>
                   </div>
                 </div>
@@ -587,7 +619,7 @@ const Home = () => {
                         />
                       </div>
 
-                      <span className="card-b fw-bold ">Men's Pyjamas</span>
+                      <span className="card-b fw-bold ">{t("men_pyj")}</span>
                     </a>
                   </div>
                   <div>
@@ -599,14 +631,14 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b ">Women's Pyjamas</span>
+                      <span className="card-b ">{t("women_pyj")}</span>
                     </a>
                   </div>
                 </div>
 
                 <div>
                   <a href="#" className="card-a text-decoration-none ">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -616,7 +648,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card ">
-                    Try Prime FREE for 30 days and shop Ramadan Sale deals
+                  {t("prime_free")}
                   </h2>
                 </div>
                 <div className="d-flex">
@@ -630,7 +662,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b fw-bold">
-                        Prime exclusive deals
+                      {t("prime_exclusive")}
                       </span>
                     </a>
                   </div>
@@ -644,7 +676,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b ">
-                        Extra 10% off* up to 150 EGP
+                      {t("extra_disc")}
                       </span>
                     </a>
                   </div>
@@ -661,7 +693,7 @@ const Home = () => {
                       </div>
 
                       <span className="card-b fw-bold">
-                        FREE shipping on all deals
+                      {t("free_shipping")}
                       </span>
                     </a>
                   </div>
@@ -675,7 +707,7 @@ const Home = () => {
                         />
                       </div>
                       <span className="card-b ">
-                        Award-winning movies and TV shows
+                      {t("aword_tv")}
                       </span>
                     </a>
                   </div>
@@ -683,7 +715,7 @@ const Home = () => {
 
                 <div>
                   <a href="#" className="card-a text-decoration-none">
-                    Try Prime FREE
+                  {t("try_prime")}
                   </a>
                 </div>
               </div>
@@ -692,7 +724,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                  {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -708,7 +740,7 @@ const Home = () => {
 
                 <div className="">
                   <a href="#" className="card-a text-decoration-none">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -718,7 +750,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card ">
-                    Ramadan Sale | Basics | Low Prices
+                  {t("ramdan_sale")}
                   </h2>
                 </div>
                 <div className="d-flex ">
@@ -731,7 +763,7 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b fw-bold">Men's Underwear</span>
+                      <span className="card-b fw-bold">{t("men_under")}</span>
                     </a>
                   </div>
                   <div>
@@ -743,7 +775,7 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b ">Women's Underwear</span>
+                      <span className="card-b ">{t("women_under")}</span>
                     </a>
                   </div>
                 </div>
@@ -758,7 +790,7 @@ const Home = () => {
                         />
                       </div>
 
-                      <span className="card-b fw-bold ">Men's Pyjamas</span>
+                      <span className="card-b fw-bold ">{t("men_pyj")}</span>
                     </a>
                   </div>
                   <div>
@@ -770,14 +802,14 @@ const Home = () => {
                           alt=""
                         />
                       </div>
-                      <span className="card-b ">Women's Pyjamas</span>
+                      <span className="card-b ">{t("women_pyj")}</span>
                     </a>
                   </div>
                 </div>
 
                 <div>
                   <a href="#" className="card-a text-decoration-none ">
-                    See more
+                  {t("see_more")}
                   </a>
                 </div>
               </div>
@@ -787,7 +819,7 @@ const Home = () => {
               <div className="card mb-4 p-3 shadow-sm d-flex  ">
                 <div>
                   <h2 className="fw-bold fonte-card  ">
-                    Ramadan Box | Only for EGP 249
+                  {t("ramdan_box")}
                   </h2>
                 </div>
 
@@ -803,7 +835,7 @@ const Home = () => {
 
                 <div className="">
                   <a href="#" className="card-a text-decoration-none">
-                    Discover more
+                  {t("discover_more")}
                   </a>
                 </div>
               </div>
