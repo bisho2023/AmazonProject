@@ -148,7 +148,7 @@ const Navbar = () => {
               }
               to="assd"
             >
-              <img src={edd} style={{ marginLeft: "10rem" }} />
+              <img src={edd}  />
             </NavLink>
           </span>
         </div>
