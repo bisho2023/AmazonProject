@@ -1,11 +1,12 @@
 import React,{useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import './navbar.css'
+import './navbar.css';
+import edd from "../images/3eed.jpg";
 
-import { useTranslation } from 'react-i18next'
-import i18next from 'i18next'
-import cookies from 'js-cookie'
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
 
 
 const languages = [
@@ -177,26 +178,16 @@ const Navbar = () => {
               {t('your_mazon.eg')}
             </NavLink>
           </span>
-          {/* <span className="nv-b-item mx-2">
-            <NavLink className="nav-item" to="/cards">
-              <a className="nav-link text-white" href="cart.html">
-                <i
-                  className="fas fa-shopping-cart"
-                  style={{ fontSize: " 19pt;" }}
-                ></i>
-                {t('Cart_page')}{" "}
-                <sup>
-                  <span
-                    className="badge badge-warning p-1 font-weight-bold"
-                    id="cartCounter"
-                  >
-                    {counter}
-                  </span>
-                </sup>
-              </a>
+          <span>
+            <NavLink
+              style={({ isActive }) =>
+                isActive ? { color: "orange" } : { color: "white" }
+              }
+              to="assd"
+            >
+              <img src={edd}  />
             </NavLink>
-          </span> */}
-          {/* <span className="nv-b-item mx-2 w-25"><a href="#"><img src='./2PNG.PNG' /></a></span> */}
+          </span>
         </div>
       </div>
     </div>

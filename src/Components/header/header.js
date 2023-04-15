@@ -175,10 +175,10 @@ const Header = () => {
     navigate(`/search?name=${search}`);
     setsearch("");
   };
-  // useEffect(() => {
+  useEffect(() => {
     
-  // //  console.log(user.uid);
-  // }, []);
+  //  console.log(user.uid);
+  }, []);
   // const usernameList = await usernameChecker(username)
 
   // if (!usernameList.length) {
