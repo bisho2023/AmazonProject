@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -45,7 +46,6 @@ export const Signup = () => {
     document.body.dir = currentLanguage.dir || 'ltr'
     document.title = t('app_title')
   }, [currentLanguage, t]);
-
 
   const localUser = JSON.parse(localStorage.getItem("userName"));
   const navigate = useNavigate();
@@ -104,9 +104,11 @@ export const Signup = () => {
         <img className="login-logo" src={Logo} alt="logo-img" />
       </Link>
       <div className="login-container">
+
         <h1>{t("signup")}</h1>
         <form onSubmit={handleSignup}>
           <h5>{t("username")}</h5>
+
           <input
             type="text"
             className="form-control"
@@ -115,6 +117,7 @@ export const Signup = () => {
             value={username}
           ></input>
           <h5>{t("email")}</h5>
+
           <input
             type="email"
             className="form-control"
@@ -123,6 +126,7 @@ export const Signup = () => {
             value={email}
           ></input>
           <h5>{t("password")}</h5>
+
           <input
             type="password"
             className="form-control"
@@ -138,6 +142,7 @@ export const Signup = () => {
           </p>
           <button className="login-registerBtn" onClick={signIn}>
           {t("acount2")}
+
           </button>
         </form>
       </div>

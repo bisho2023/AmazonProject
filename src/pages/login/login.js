@@ -1,4 +1,6 @@
+
 import React, { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import "./login.css";
 import Logo from "../images/Logo.png";
@@ -8,8 +10,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-
-
 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
@@ -44,6 +44,7 @@ export const Login = () => {
   }, [currentLanguage, t]);
 
 
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -66,21 +67,25 @@ export const Login = () => {
         <img className="login-logo" src={Logo} alt="logo-img" />
       </Link>
       <div className="login-container">
+
         <h1>{t("login")}</h1>
         <form>
           <h5>{t("email")}</h5>
+
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <h5>{t("password")}</h5>
+
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="login-signInBtn" type="submit" onClick={signIn}>
+
             {t("login2")}
           </button>
           <p>
@@ -88,6 +93,7 @@ export const Login = () => {
           </p>
           <button className="login-registerBtn" onClick={signUp}>
            {t("account")}
+
           </button>
         </form>
       </div>

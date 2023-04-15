@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axioss from "../../axios/axios";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards, { changeCounter } from "../../store/action";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "@firebase/firestore";
 import { db } from '../../firebase';
 
 import { useTranslation } from 'react-i18next';
@@ -77,6 +77,7 @@ const Mobile = () => {
             </div>
           )
         })}
+
         {Mobile.map((prd,index) => {
           return (
             <div class="col-md-4 my-3" key={index}>
@@ -103,6 +104,7 @@ const Mobile = () => {
             </div>
           );
         })}
+
       </div>
       {/* <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col-md-4 my-3">

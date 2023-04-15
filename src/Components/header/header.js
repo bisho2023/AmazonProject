@@ -96,11 +96,9 @@
 // export default Header;
 // ///////////////////////////////////////
 
-
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 
 // import Logo from "../images/header-logo.png";
 // import searchIcon from "../images/icons/searchIcon.png";
@@ -176,8 +174,7 @@ const Header = () => {
     setsearch("");
   };
   useEffect(() => {
-    
-  //  console.log(user.uid);
+    //  console.log(user.uid);
   }, []);
   // const usernameList = await usernameChecker(username)
 
@@ -192,12 +189,11 @@ const Header = () => {
 
   // const userName = JSON.parse(localStorage.getItem('userName'));
   return (
-
     <div className="header ">
       <Link to="/">
         <img className="header-logo" src="./header-logo.png" alt="logo-img" />
       </Link>
-      <form onSubmit={handelSubmit} style={{width:"60%"}}>
+      <form onSubmit={handelSubmit} style={{ width: "60%" }}>
         <div className="header-search ">
           <input
             className="header-searchInput"
@@ -307,7 +303,7 @@ const Header = () => {
           </a>
         </NavLink>
       </span>
-    </div >
+    </div>
   );
 };
 
