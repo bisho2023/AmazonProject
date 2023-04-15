@@ -7,39 +7,20 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from '../../firebase';
 
 
-import { useTranslation } from 'react-i18next'
-import i18next from 'i18next'
-import cookies from 'js-cookie'
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
 
 
-const languages = [
-  {
-    code: 'en',
-    name: 'English',
-    country_code: 'gb',
-  },
-  {
-    code: 'ar',
-    name: 'العربية',
-    dir: 'rtl',
-    country_code: 'sa',
-  },
-]
 
 
 const Help = () => {
-   let country_code=true;
 
   //language
   const currentLanguageCode = cookies.get('i18next') || 'en'
-  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
-  useEffect(() => {
-    console.log('Setting page stuff')
-    document.body.dir = currentLanguage.dir || 'ltr'
-    document.title = t('app_title')
-  }, [currentLanguage, t])
+ 
 
 
 
@@ -119,8 +100,8 @@ const Help = () => {
                 <div className="card-body">
                  
                   <h5 className="card-title"> {currentLanguageCode==='en' ? `${prd.nameen}` : `${prd.namear}`} </h5>
-                  <p className="card-text"><strong>Description :</strong> {currentLanguageCode==='en' ? `${prd.descriptionen}` : `${prd.description}`}</p>
-                  <h3>Price : {prd.price}</h3>
+                  <p className="card-text"><strong>{t("description")}</strong> {currentLanguageCode==='en' ? `${prd.descriptionen}` : `${prd.description}`}</p>
+                  <h3>{t("price")} {prd.price}</h3>
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <button
                     className="btn btn-primary"
@@ -129,7 +110,7 @@ const Help = () => {
                       dispatch(changeCounter(counter + 1));
                     }}
                   >
-                    Add To Cards
+                   {t("addcart")}
                   </button>
                 </div>
               </div>

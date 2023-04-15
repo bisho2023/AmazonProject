@@ -4,7 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from '../../firebase';
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+
 const Electronics = () => {
+
+     //language
+     const currentLanguageCode = cookies.get('i18next') || 'en'
+     const { t } = useTranslation();
+ 
+     
   const [Electronics, setElectronics] = useState([]);
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
@@ -76,9 +87,9 @@ const Electronics = () => {
                 />
                 <div class="card-body">
                   
-                  <h5 className="card-title">{prd.name}</h5>
-                  <p className="card-text"><strong>Description :</strong>  {prd.description}</p>
-                  <h3>Price : {prd.price}</h3>
+                  <h5 className="card-title">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h5>
+                  <p className="card-text"><strong>{t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <h3>{t("price")} {prd.price}</h3>
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <button
                     className="btn btn-primary"
@@ -87,7 +98,7 @@ const Electronics = () => {
                       dispatch(changeCounter(counter + 1));
                     }}
                   >
-                    Add To Cards
+                    {t("addcart")}
                   </button>
                 </div>
               </div>

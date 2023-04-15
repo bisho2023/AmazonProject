@@ -52,6 +52,15 @@
     "help_page": "Help",
     "your_mazon.eg":"Your Amazon.eg",
     "Cart_page": "Cart",
+    "description": "Description :",
+    "price": "Price :",
+    "addcart": "Add To Cards",
+
+    "basket": "Your shopping Basket",
+    "remove": "Remove from Basket",
+    "gift": "This order contains a gift",
+    "proceed": "Proceed to Checkout",
+    "subtotal": "Subtotal:",
 
     "backTo_top": "Back to Top",
     "newto_amazon":"NEW TO AMAZON ?",
@@ -62,7 +71,6 @@
     "get_access":"Get access to exclusive offers!",
     "app_store":"App Store",
     "google_play":"Google Play",
-
     "let_help": "LET US HELP YOU",
     "help_center": "Help Center",
     "cotact_us": "Cotact US",
@@ -73,19 +81,16 @@
     "corprate_services": "Corporate Services",
     "report_product": "Report a Product",
     "about_amazon": "ABOUT AMAZON EGYPT",
-
     "make_money" :"MAKE MONEY WITH AMAZON",
     "sell_amazon": "Sell on Amazon",
     "become_logistics": "Become a Logistics Service Partner",
     "become_sales": "Become a Sales Consultant (J-Force )",
-
     "international_amazon": "AMAZON INTERNATIONAL",
     "country_alg": "Algeria",
     "country_gha": "Ghana",
     "country_ken": "Kenya",
     "country_mor": "Morocco",
     "join_us": "JOIN US ON",
-
     "prime_free": "Try Prime FREE for 30 days and shop Ramadan Sale deals",
     "prime_exclusive": "Prime exclusive deals",
     "extra_disc": "  Extra 10% off* up to 150 EGP",
