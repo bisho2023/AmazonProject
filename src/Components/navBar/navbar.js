@@ -25,9 +25,6 @@ const languages = [
 ]
 
 
-
-import edd from "../images/3eed.jpg";
-
 const Navbar = () => {
 
   //language
@@ -200,7 +197,7 @@ const Navbar = () => {
               }
               to="assd"
             >
-              <img src={edd}  />
+              {/* <img src={edd}  /> */}
             </NavLink>
           </span>
         </div>

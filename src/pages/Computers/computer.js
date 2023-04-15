@@ -37,7 +37,7 @@ const Computer = () => {
   // }
   const productsRef = collection(db, "products");
   const fetchPost = async () => {
-    if (lang == "en") {
+    
       const q = query(productsRef, where("category", "==", "computer"));
       const querySnapshot = await getDocs(q);
       const products = [];
@@ -45,15 +45,7 @@ const Computer = () => {
         products.push(doc.data());
       });
       setComputurs(products);
-    } else if (lang == "ar") {
-      const q = query(productsRef, where("lang", "==", "ar"));
-      const querySnapshot = await getDocs(q);
-      const products = [];
-      querySnapshot.forEach((doc) => {
-        products.push(doc.data());
-      });
-      setComputurs(products);
-    }
+   
   };
   const categoryRef = collection(db, "category");
   const fetchcat = async () => {
