@@ -11,7 +11,43 @@ import { useAuth } from '../../context/GlobalProvider';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
+
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+
+const languages = [
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb',
+  },
+  {
+    code: 'ar',
+    name: 'العربية',
+    dir: 'rtl',
+    country_code: 'sa',
+  },
+]
+
+
 const CheckOut = () => {
+
+    
+  //language
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    console.log('Setting page stuff')
+    document.body.dir = currentLanguage.dir || 'ltr'
+    document.title = t('app_title')
+  }, [currentLanguage, t])
+
+
+
     let checker = true;
     const { user } = useAuth();
     const getBasketTotal = (cards) =>
@@ -50,39 +86,39 @@ const CheckOut = () => {
                     <div className="accordion-item">
                         <h2 className="accordion-header">
                             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                1- Add Address
+                                {t("addaddress")}
                             </button>
                         </h2>
                         <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div className="accordion-body w-50 mx-3">
 
                                 <form className='form-group' autoComplete="off" onSubmit={handelForm} >
-                                    <label>User Name</label>
+                                    <label>{t("username")}</label>
                                     <input type="text" className='form-control' required />
                                     <br></br>
-                                    <label>Mobile</label>
+                                    <label>{t("mobile_page")}</label>
                                     <input type="number" className='form-control' required />
                                     <br></br>
-                                    <label>Street Name</label>
+                                    <label>{t("street")}</label>
                                     <input type="text" className='form-control' required />
                                     <br></br>
-                                    <label>Build name/no</label>
+                                    <label>{t("buildname")}</label>
                                     <input type="text" className='form-control' required />
                                     <br></br>
-                                    <label>City/Area</label>
+                                    <label>{t("cityarea")}</label>
                                     <input type="text" className='form-control' required />
                                     <br></br>
-                                    <label>District</label>
+                                    <label>{t("district")}</label>
                                     <input type="text" className='form-control' required />
                                     <br></br>
-                                    <label>Governorate</label>
+                                    <label>{t("governorate")}</label>
                                     <input type="text" className='form-control' required />
                                     <br></br>
-                                    <label>Nearest landmark</label>
+                                    <label>{t("nearest")}</label>
                                     <input type="text" className='form-control' required />
                                     <br></br>
                                     <div className='btn-box'>
-                                        <button type="submit" className='btn btn-warning btn-md'>Add Address</button>
+                                        <button type="submit" className='btn btn-warning btn-md'>{t("addaddress2")}</button>
                                     </div>
                                 </form>
                             </div>
@@ -91,7 +127,7 @@ const CheckOut = () => {
                     <div className="accordion-item">
                         <h2 className="accordion-header">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                2- payment Method
+                            {t("paymentmethod")}
                             </button>
                         </h2>
                         <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -119,7 +155,7 @@ const CheckOut = () => {
                                             }} />
                                     </PayPalScriptProvider>
                                 ) : (
-                                    <h2>you must enter Address Form</h2>
+                                    <h2> {t("compliteform")}</h2>
                                 )}
                             </div>
                         </div>
@@ -127,12 +163,12 @@ const CheckOut = () => {
                     <div className="accordion-item">
                         <h2 className="accordion-header">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                3- Items and shipping
+                            {t("itemshipping")}
                             </button>
                         </h2>
                         <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                <strong>{t("accordionbody")}</strong>{t("hiddenitem")} <code>{t("accordionbody2")}</code>{t("transitionitem")}
                             </div>
                         </div>
                     </div>
@@ -140,17 +176,17 @@ const CheckOut = () => {
 
                 <div className="col-lg-3 col-md-6">
                     <div className="subtotal">
-                        <strong>Order Summary</strong>
+                        <strong>{t("ordersummary")}</strong>
                         <p>
                             {" "}
-                            Items: $ {getBasketTotal(cards)}
+                            {t("items")}: $ {getBasketTotal(cards)}
                         </p>
-                        <p>Shipping & handling: {"--"}</p>
+                        <p>{t("shippinghandling")} {"--"}</p>
                         <small className="subtotal__gift">
-                            <input type="checkbox" /> This order contains a gift
+                            <input type="checkbox" /> {t("giftorder")}
                         </small>
                         <hr />
-                        <h2 className='danger'>Order Total : {getBasketTotal(cards)}</h2>
+                        <h2 className='danger'>{t("ordertotal")} {getBasketTotal(cards)}</h2>
                     </div>
                 </div>
 

@@ -262,7 +262,7 @@ const Header = () => {
               {t("welcome_message")} {user ? `${user.email}` : "Guest"}
             </div>
             <div className="header-optionLineTwo">
-              {user ? "Sign Out" : "Sign In"}
+              {user ? `${t("signout")}` : `${t("signin")}`}
             </div>
           </div>
         </Link>
