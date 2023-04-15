@@ -70,7 +70,7 @@ const Grocery = () => {
       {categories.map((cat, index) => {
           return (
             <div key={index} className="d-flex">
-             {/* <h1>{cat.name}</h1> */}
+             <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
               
             <img
               className="card-img-top w-50"
@@ -112,7 +112,7 @@ const Grocery = () => {
                   
                   </button>
                 </div>
-                <h1>hello from project test</h1>
+
               </div>
             </div>
           );

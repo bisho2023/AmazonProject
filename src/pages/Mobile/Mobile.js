@@ -68,7 +68,7 @@ const Mobile = () => {
       {categories.map((cat, index) => {
           return (
             <div key={index}>
-              <h1>{cat.name}</h1>
+              <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
             <img
               className="card-img-top "
               src={cat.image}
