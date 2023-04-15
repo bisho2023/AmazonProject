@@ -25,7 +25,8 @@ const languages = [
 
 
 const Home = () => {
-
+  
+//language
   const currentLanguageCode = cookies.get('i18next') || 'en'
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
   const { t } = useTranslation()

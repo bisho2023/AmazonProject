@@ -106,13 +106,15 @@
     "women_pyj": "Women's Pyjamas",
     "discover_more": "Discover more",
 
-
-    "login": "Login",
+    "login": "Log in",
     "email": "Email",
     "password": "Password",
-    "account": "Don't have an account SignUp",
-    "here": "Here",
-    "login2": "LOGIN"
+    "account": " Create your Amazon Account",
+    "rules": " By continuing, you agree to Amazon's Fake Clone Conditions of Use and Privacy Notice.",
+    "login2": "Sign in",
+    "signup": "Sign up",
+    "username": "User Name",
+    "acount2": " You have already an account"
 
 
     

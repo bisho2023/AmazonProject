@@ -25,7 +25,7 @@ import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAuth } from "./context/GlobalProvider";
 import CheckOut from "./pages/order/CheckOut";
-import Help from "./pages/help/help";
+
 
 
 function App() {
@@ -73,7 +73,6 @@ dispatch({
         <Route path="/signup"element={<Signup/>}/>
         <Route path="/login"element={<Login/>}/>
         <Route path="/checkout"element={<CheckOut />}/>
-        <Route path="/help"element={<Help />}/>
 
       </Routes>
       <Footer />

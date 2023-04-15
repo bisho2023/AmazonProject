@@ -1,9 +1,13 @@
-import React,{useEffect, useState} from 'react'
-import {Link, } from 'react-router-dom'
-
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./login.css";
+import Logo from "../images/Logo.png";
 import { useNavigate } from "react-router-dom";
-import { auth } from '../../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "../../firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 
 
@@ -26,10 +30,9 @@ const languages = [
 ]
 
 
-
 export const Login = () => {
 
-    
+  //language
   const currentLanguageCode = cookies.get('i18next') || 'en'
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
   const { t } = useTranslation()
@@ -38,60 +41,56 @@ export const Login = () => {
     console.log('Setting page stuff')
     document.body.dir = currentLanguage.dir || 'ltr'
     document.title = t('app_title')
-  }, [currentLanguage, t])
+  }, [currentLanguage, t]);
 
-    const navigate = useNavigate();
-    const [email, setEmail]=useState('');
-    const [password, setPassword]=useState('');
 
-    const [errorMsg, setErrorMsg]=useState('');
-    const [successMsg, setSuccessMsg]=useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const handleLogin=(e)=>{
-        e.preventDefault();
-         console.log(email, password);
-       signInWithEmailAndPassword(auth,email,password).then(()=>{
-            setSuccessMsg('Login Successfull. You will now automatically get redirected to Home page');
-            setEmail('');
-            setPassword('');
-            setErrorMsg('');
-            setTimeout(()=>{
-                setSuccessMsg('');
-                navigate('/');
-            },3000)
-        }).catch(error=>setErrorMsg(error.message));
-    }
+  const signIn = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password).then((auth) => {
+      if (auth) {
+        navigate("/");
+      }
+    });
+  };
 
-    return (
-        <div className='container'>
-            <br></br>
-            <br></br>
-            <h1>{t("login")}</h1>
-            <hr></hr>
-            {successMsg&&<>
-                <div className='success-msg'>{successMsg}</div>
-                <br></br>
-            </>}
-            <form className='form-group' autoComplete="off"
-            onSubmit={handleLogin}>               
-                <label>{t("email")}</label>
-                <input type="email" className='form-control' required
-                onChange={(e)=>setEmail(e.target.value)} value={email}></input>
-                <br></br>
-                <label>{t("password")}</label>
-                <input type="password" className='form-control' required
-                onChange={(e)=>setPassword(e.target.value)} value={password}></input>
-                <br></br>
-                <div className='btn-box'>
-                    <span>{t("account")}
-                    <Link to="signup" className='link'> {t("here")}</Link></span>
-                    <button type="submit" className='btn btn-success btn-md'>{t("login2")}</button>
-                </div>
-            </form>
-            {errorMsg&&<>
-                <br></br>
-                <div className='error-msg'>{errorMsg}</div>                
-            </>}
-        </div>
-    )
-}
+  const signUp = () => {
+    navigate("/signup");
+  };
+  return (
+    <div className="login">
+      <Link to="/">
+        <img className="login-logo" src={Logo} alt="logo-img" />
+      </Link>
+      <div className="login-container">
+        <h1>{t("login")}</h1>
+        <form>
+          <h5>{t("email")}</h5>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <h5>{t("password")}</h5>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="login-signInBtn" type="submit" onClick={signIn}>
+            {t("login2")}
+          </button>
+          <p>
+           {t("rules")}
+          </p>
+          <button className="login-registerBtn" onClick={signUp}>
+           {t("account")}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
