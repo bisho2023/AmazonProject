@@ -84,6 +84,7 @@ const CheckOut = () => {
             <div className='row'>
                 <div className="accordion col-lg-8 col-md-6" id="accordionExample">
                     <div className="accordion-item">
+                        <h1>hello world from my project</h1>
                         <h2 className="accordion-header">
                             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 {t("addaddress")}
