@@ -104,7 +104,16 @@
     "women_under": "Women's Underwear",
     "men_pyj": "Men's Pyjamas",
     "women_pyj": "Women's Pyjamas",
-    "discover_more": "Discover more"
+    "discover_more": "Discover more",
+
+
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "account": "Don't have an account SignUp",
+    "here": "Here",
+    "login2": "LOGIN"
+
 
     
 

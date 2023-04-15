@@ -1,12 +1,46 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import {Link, } from 'react-router-dom'
 
 import { useNavigate } from "react-router-dom";
 import { auth } from '../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+
+
+
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+const languages = [
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb',
+  },
+  {
+    code: 'ar',
+    name: 'العربية',
+    dir: 'rtl',
+    country_code: 'sa',
+  },
+]
+
+
+
 export const Login = () => {
+
+    
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    console.log('Setting page stuff')
+    document.body.dir = currentLanguage.dir || 'ltr'
+    document.title = t('app_title')
+  }, [currentLanguage, t])
+
     const navigate = useNavigate();
-   
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
 
@@ -32,7 +66,7 @@ export const Login = () => {
         <div className='container'>
             <br></br>
             <br></br>
-            <h1>Login</h1>
+            <h1>{t("login")}</h1>
             <hr></hr>
             {successMsg&&<>
                 <div className='success-msg'>{successMsg}</div>
@@ -40,18 +74,18 @@ export const Login = () => {
             </>}
             <form className='form-group' autoComplete="off"
             onSubmit={handleLogin}>               
-                <label>Email</label>
+                <label>{t("email")}</label>
                 <input type="email" className='form-control' required
                 onChange={(e)=>setEmail(e.target.value)} value={email}></input>
                 <br></br>
-                <label>Password</label>
+                <label>{t("password")}</label>
                 <input type="password" className='form-control' required
                 onChange={(e)=>setPassword(e.target.value)} value={password}></input>
                 <br></br>
                 <div className='btn-box'>
-                    <span>Don't have an account SignUp
-                    <Link to="signup" className='link'> Here</Link></span>
-                    <button type="submit" className='btn btn-success btn-md'>LOGIN</button>
+                    <span>{t("account")}
+                    <Link to="signup" className='link'> {t("here")}</Link></span>
+                    <button type="submit" className='btn btn-success btn-md'>{t("login2")}</button>
                 </div>
             </form>
             {errorMsg&&<>
