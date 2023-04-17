@@ -66,12 +66,12 @@ const Grocery = () => {
 
   return (
     <div className="container">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div className="row row-cols-1 row-cols-md-3 g-4">
         {categories.map((cat, index) => {
           return (
             <div key={index} className="d-flex">
+              {/* <h1 className="d-block">{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
 
-             <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
               
             <img
               className="card-img-top w-50"
@@ -89,27 +89,26 @@ const Grocery = () => {
         })}
         {grocery.map((prd, index) => {
           return (
-            <div class="col-md-4 my-3" key={index} style={{ height: "70vh" }}>
-              <div class="card">
+            <div className="col-md-4 my-3" key={index}>
+              <div className="card">
                 <img
                   style={{
                     width: "100%",
                     height: "20rem",
                     objectFit: "contain",
                   }}
-                  className="card-img-top h-50"
+                  className="card-img-top"
                   src={prd.image}
                   alt="Card image cap"
                 />
-                <div class="card-body">
 
+                <div className="card-body">
 
                   <h5 className="card-title">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h5>
-                  <p className="card-text"><strong>{t("description")}</strong>{currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
                   <h3>{t("price")} {prd.price}</h3>
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
-
                   <button
                     style={{
                       fontSize: "14px",
@@ -119,6 +118,10 @@ const Grocery = () => {
                       padding: "0 20px 0 20px",
                       marginTop: "1.2rem",
                       marginLeft: "4rem",
+                      // position: "absolute",
+                      // left: "30%",
+                      // bottom: "0",
+                      // marginBottom: "1rem",
                     }}
                     className="btn btn-warning"
                     onClick={() => {
@@ -127,10 +130,8 @@ const Grocery = () => {
                     }}
                   >
                     {t("addcart")}
-                  
                   </button>
                 </div>
-
               </div>
             </div>
           );
