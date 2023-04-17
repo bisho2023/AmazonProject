@@ -15,13 +15,12 @@ import ReactStars from "react-rating-stars-component";
 
 
 
-const Tv = () => {
+const Help = () => {
+   //ratind and review
 
-  //ratind and review
+
   const ratingChanged = (newRating) => {
     console.log(newRating);
-    alert(`the rating is ${newRating}`)
-
   };
 
     //language
@@ -35,20 +34,7 @@ const Tv = () => {
   const dispatch = useDispatch();
   const [categories, setCategory] = useState([]);
 
-
-
-
-  
-//   const fetchPost = async () => {
-//     await getDocs(collection(db, "TV"))
-//         .then((querySnapshot)=>{              
-//             const newData = querySnapshot.docs
-//                 .map((doc) => ({...doc.data(), id:doc.id }));
-//                 setTV(newData);                
-//             console.log(TV, newData);
-//         }) 
-// }
-const productsRef = collection(db, "products");
+const productsRef = collection(db, "card");
   const fetchPost = async ()=>{
     const q = query(productsRef,where("category", "==", "tv"));
     const querySnapshot = await getDocs(q);
@@ -107,10 +93,10 @@ useEffect(()=>{
                   <h3>{t("price")} {prd.price}</h3>
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <p><ReactStars
-                             index={index}
-                             count={5}
-                             onChange={ratingChanged}
-                             value={index+1}
+   
+                           count={5}
+                           onChange={ratingChanged}
+                           value={prd.rate[1]}
                            size={24}
                            isHalf={true} 
                          activeColor="#ffd700"
@@ -131,10 +117,14 @@ useEffect(()=>{
             </div>
           );
         })}
+
       </div>
     </div>
 
-  );
-};
 
-export default Tv;
+
+
+  );
+}
+
+export default Help;

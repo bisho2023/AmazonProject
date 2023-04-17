@@ -48,7 +48,8 @@ const CheckOut = () => {
 
 
 
-    let checker = true;
+    let checker = false;
+
     const { user } = useAuth();
     const getBasketTotal = (cards) =>
         cards.reduce((amount, item) => {
@@ -72,19 +73,43 @@ const CheckOut = () => {
     const handelForm = (event) => {
         event.preventDefault();
         checker = true;
+        handleToggle();
         console.log("success");
+        // test();
     }
+
+
+
+
+// const [chech,setCheck]= useState(false)
 
     // useEffect(() => {
     //     checker = true;
     // }, [checker]);
+
+
+    const [visible, setVisible] = useState(false);
+
+    const handleToggle = () => {
+    setVisible((current) => !current);
+      console.log("hello world");
+      checker = true;
+
+    };
+    
+//   useEffect(() => {
+//     if (visible) {
+//     alert('hello world 3');
+//     }
+//   }, [visible]);
+
     return (
         <div className='container-fluid my-3'>
             {/* <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button> */}
             <div className='row'>
                 <div className="accordion col-lg-8 col-md-6" id="accordionExample">
                     <div className="accordion-item">
-                        <h1>hello world from my project</h1>
+
                         <h2 className="accordion-header">
                             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 {t("addaddress")}
@@ -127,13 +152,18 @@ const CheckOut = () => {
                     </div>
                     <div className="accordion-item">
                         <h2 className="accordion-header">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        {/* {...(checker===true ? { hidden: false }:test())} */}
+                            <button  className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             {t("paymentmethod")}
                             </button>
+
                         </h2>
+
+                        {visible &&
                         <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div className="accordion-body w-50">
-                                {checker ? (
+                                {/* {checker ? (            {...(checker ? {bsStyle: 'success'} : {})}   */}
+                               
                                     <PayPalScriptProvider options={{ "client-id": "Ad2_pXcY1MLRKJPse7snylSl0592iEOcuRPyI1VSakX2RkqkYHop9867O7wNqOKwW2F3lu2n90vye1Ho" }}>
                                         <PayPalButtons createOrder={(data, action) => {
                                             return action.order.create({
@@ -155,11 +185,13 @@ const CheckOut = () => {
                                                 })
                                             }} />
                                     </PayPalScriptProvider>
-                                ) : (
+
+                                {/* ) : (
                                     <h2> {t("compliteform")}</h2>
-                                )}
+                                )} */}
                             </div>
-                        </div>
+                        </div>}
+
                     </div>
                     <div className="accordion-item">
                         <h2 className="accordion-header">
@@ -167,11 +199,12 @@ const CheckOut = () => {
                             {t("itemshipping")}
                             </button>
                         </h2>
+                        { visible &&
                         <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
                                 <strong>{t("accordionbody")}</strong>{t("hiddenitem")} <code>{t("accordionbody2")}</code>{t("transitionitem")}
                             </div>
-                        </div>
+                        </div>}
                     </div>
                 </div>
 
