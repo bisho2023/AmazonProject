@@ -74,7 +74,8 @@ const Grocery = () => {
         {categories.map((cat, index) => {
           return (
             <div key={index} className="d-flex">
-              {/* <h1 className="d-block">{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
+
+             {/* <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
 
               
             <img
