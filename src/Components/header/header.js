@@ -264,7 +264,7 @@ const Header = () => {
         </Link>
       </div>
 
-      <Link to="/orders">
+      <Link to={user ? "/cards" : "/login" }>
         <div className="header-option">
           <div className="header-optionLineOne">{t("page_order")}</div>
           <div className="header-optionLineTwo">{t("page_order2")}</div>
