@@ -1,46 +1,39 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import './navbar.css';
+import "./navbar.css";
 import edd from "../images/3eed.jpg";
 
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import cookies from 'js-cookie';
-
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import cookies from "js-cookie";
 
 const languages = [
   {
-    code: 'en',
-    name: 'English',
-    country_code: 'gb',
+    code: "en",
+    name: "English",
+    country_code: "gb",
   },
   {
-    code: 'ar',
-    name: 'العربية',
-    dir: 'rtl',
-    country_code: 'sa',
+    code: "ar",
+    name: "العربية",
+    dir: "rtl",
+    country_code: "sa",
   },
-]
-
+];
 
 const Navbar = () => {
-
   //language
-  const currentLanguageCode = cookies.get('i18next') || 'en'
-  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
-  const { t } = useTranslation()
+  const currentLanguageCode = cookies.get("i18next") || "en";
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    console.log('Setting page stuff')
-    document.body.dir = currentLanguage.dir || 'ltr'
-    document.title = t('app_title')
-  }, [currentLanguage, t])
-
-
-
-  
+    console.log("Setting page stuff");
+    document.body.dir = currentLanguage.dir || "ltr";
+    document.title = t("app_title");
+  }, [currentLanguage, t]);
 
   // const counter = useSelector((state) => state.count);
   return (
@@ -55,7 +48,7 @@ const Navbar = () => {
                 }
                 href="#"
               >
-                {t('all_pages')}
+                {t("all_pages")}
               </NavLink>
             </strong>
           </span>
@@ -66,7 +59,7 @@ const Navbar = () => {
               }
               to="/"
             >
-              {t('home_page')}
+              {t("home_page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -76,7 +69,7 @@ const Navbar = () => {
               }
               to="/accessories"
             >
-              {t('accessories-page')}
+              {t("accessories-page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -86,7 +79,7 @@ const Navbar = () => {
               }
               to="/electronics"
             >
-              {t('electronics_page')}
+              {t("electronics_page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -96,7 +89,7 @@ const Navbar = () => {
               }
               to="/clothing"
             >
-              {t('clothing_Page')}
+              {t("clothing_Page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -106,7 +99,7 @@ const Navbar = () => {
               }
               to="/computer"
             >
-              {t('computer_page')}
+              {t("computer_page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -116,7 +109,7 @@ const Navbar = () => {
               }
               to="/fashion"
             >
-              {t('fashion_Page')}
+              {t("fashion_Page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -126,7 +119,7 @@ const Navbar = () => {
               }
               to="/grocery"
             >
-              {t('grocery_Page')}
+              {t("grocery_Page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -136,7 +129,7 @@ const Navbar = () => {
               }
               to="/mobile"
             >
-              {t('mobile_page')}
+              {t("mobile_page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -146,7 +139,7 @@ const Navbar = () => {
               }
               to="/videos"
             >
-              {t('videos_Page')}
+              {t("videos_Page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -156,7 +149,7 @@ const Navbar = () => {
               }
               to="tv"
             >
-              {t('tv_page')}
+              {t("tv_page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -166,7 +159,7 @@ const Navbar = () => {
               }
               to="assd"
             >
-              {t('help_page')}
+              {t("help_page")}
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -176,7 +169,7 @@ const Navbar = () => {
               }
               to="assd"
             >
-              {t('your_mazon.eg')}
+              {t("your_mazon.eg")}
             </NavLink>
           </span>
           <span>
@@ -186,7 +179,7 @@ const Navbar = () => {
               }
               to="assd"
             >
-              <img src={edd}  />
+              <img src={edd} />
             </NavLink>
           </span>
 
