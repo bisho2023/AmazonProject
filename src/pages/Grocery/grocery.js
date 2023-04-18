@@ -3,8 +3,16 @@ import axioss from "../../axios/axios";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards, { changeCounter } from "../../store/action";
 
+
 import { collection, getDocs, query, where } from "@firebase/firestore";
 import { db } from "../../firebase";
+
+
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+
 
 
 import { useTranslation } from 'react-i18next';
@@ -108,6 +116,7 @@ const Grocery = () => {
                   <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
                   <h3>{t("price")} {prd.price}</h3>
 
+
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <button
                     style={{
@@ -130,7 +139,9 @@ const Grocery = () => {
                     }}
                   >
                     {t("addcart")}
+
                   </button>
+                  <h1>helllo world</h1>
                 </div>
               </div>
             </div>
