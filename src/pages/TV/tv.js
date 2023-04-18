@@ -3,7 +3,7 @@ import axioss from "../../axios/axios";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards, { changeCounter } from "../../store/action";
 
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where } from "@firebase/firestore";
 import { db } from '../../firebase';
 
 
@@ -106,6 +106,7 @@ useEffect(()=>{
                   <p className="card-text"><strong> {t("description")}</strong>  {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
                   <h3>{t("price")} {prd.price}</h3>
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
+
                   <p><ReactStars
                              index={index}
                              count={5}
@@ -119,6 +120,7 @@ useEffect(()=>{
 
                   <button
                     className="btn btn-primary"
+
                     onClick={() => {
                       dispatch(changeCards([...cards, prd]));
                       dispatch(changeCounter(counter + 1));

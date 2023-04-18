@@ -8,7 +8,7 @@ import './checkout.css'
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { useSelector } from 'react-redux';
 import { useAuth } from '../../context/GlobalProvider';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from '@firebase/firestore';
 import { db } from '../../firebase';
 
 
@@ -105,7 +105,7 @@ const CheckOut = () => {
 
     return (
         <div className='container-fluid my-3'>
-            {/* <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button> */}
+            <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button>
             <div className='row'>
                 <div className="accordion col-lg-8 col-md-6" id="accordionExample">
                     <div className="accordion-item">

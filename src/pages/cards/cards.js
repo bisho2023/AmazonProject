@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards from "../../store/action";
 import { changeCounter } from "../../store/action";
@@ -6,6 +6,7 @@ import "./cards.css";
 import { useAuth } from "../../context/GlobalProvider";
 
 import { useNavigate } from "react-router-dom";
+
 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
@@ -28,6 +29,11 @@ const Cards = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
+  useEffect(()=>{
+ localStorage.getItem("card",JSON.stringify(cards))
+
+  },[cards]);
+
   return (
     <>
       <div className="container-fluid ">
@@ -49,7 +55,7 @@ const Cards = () => {
                       <strong> {prd.price}</strong>
                     </p>
 
-                    <button
+                    <button style={{  fontSize:"13px",borderWidth:"1px",borderRadius:"8px",borderStyle:"solid",padding:"0 10px 0 11px"}}
                       onClick={() => {
                         let index = cards.findIndex(
                           (ele) => ele.name === prd.name
