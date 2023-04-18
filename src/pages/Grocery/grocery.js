@@ -15,14 +15,10 @@ import cookies from 'js-cookie';
 
 
 
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import cookies from 'js-cookie';
-
 
 const Grocery = () => {
 
-   //language
+  
    const currentLanguageCode = cookies.get('i18next') || 'en'
    const { t } = useTranslation();
  
