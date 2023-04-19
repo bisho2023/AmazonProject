@@ -93,11 +93,11 @@ export default Help;
                                                           <i class="fa-regular fa-star">
                                                               </i>
                                                               <span class="a-size-small">480</span>
-                                                              </div>
+                                                          </div>
                                                             
                                                                 
                                                                    
-                                                                      <span >EGP&nbsp;98.00</span>
+                                              <span >EGP&nbsp;98.00</span>
                                                                       <div class="a-row"><span class="a-size-mini a-color-base" dir="auto">Get it as soon as 
                                                 <b>Thursday, April 27</b>
                                                 </span></div> */}
