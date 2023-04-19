@@ -1,5 +1,5 @@
 // import { Route, Routes } from 'react-router-dom';
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes, useLocation } from "react-router";
 
 import "./App.css";
 import Footer from "./Components/footer/footer";
@@ -53,14 +53,19 @@ function App() {
     )
 
   }, [])
+  let location = useLocation();
+  
   return (
     <>
-    
-      <Header />
+   
+      {/* <Header /> */}
+      
+      {location.pathname!=='/404' ? <Header/> :null}
       <Navbar />
       {/* <Sidebar /> */}
       {/* <Home/> */}
       <Routes>
+     
         <Route path="/" element={<Home />} />
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/clothing" element={<Clothing />} />
@@ -82,8 +87,9 @@ function App() {
         <Route path="*" element={<Navigate to="/404" />} />
       
       </Routes>
+      {location.pathname!=='/404' ? <Footer/> :null}
     
-      <Footer />
+      {/* <Footer /> */}
       
     </>
   );
