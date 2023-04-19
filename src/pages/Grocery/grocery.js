@@ -138,7 +138,7 @@ const Grocery = () => {
                     {t("addcart")}
 
                   </button>
-                  <h1>helllo world</h1>
+                  
                 </div>
               </div>
             </div>
