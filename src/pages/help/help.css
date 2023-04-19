@@ -1,0 +1,102 @@
+
+#header{
+
+    position: relative !important;
+    z-index: 10 !important;
+    display: flex !important;
+  /* padding-left: 12px !important; */
+    flex-direction: row !important;
+    align-items: center !important;
+    /* min-width: 1000px !important; */
+    height: 60px !important;
+    font-size: 16px !important;
+    box-shadow: 0 0 12px 0 rgba(0,0,0,.25) !important;
+    background: #007185 !important;
+    color: #fff !important;
+
+   
+  }
+  .cs-title {
+    padding: 0 24px;
+    line-height: 30px;
+    border-right: 1px solid #fff;
+}
+ .nav-item1 {
+    border-bottom: 2px solid #fff !important;
+    margin-left: 29px !important;
+}
+ .nav-item {
+    margin-left: 26px;
+}
+.alert-box {
+    border-color: #1495a9;
+}
+
+.alert-box {
+    border-width: 2px 2px 2px 2px;
+    border-radius: 8px;
+    border-style: solid;
+    border-inline-start-width: 12px;
+    background-color: white;
+    padding: 12px 32px;
+    margin: 12px 0;
+}
+.page-wrapper.hero-banner {
+    background: #007185 !important;
+    min-height: 0 !important;
+    padding-top: 45px !important;
+    padding-bottom: 45px !important;
+}
+/* .page-wrapper {
+  
+   
+} */
+.subtext {
+    font-size: 20px;
+    color: #fff;
+    margin: 12px 0;
+}
+#hub-gateway-app {
+    box-sizing: border-box;
+}
+.card-container .card-wrapper {
+    width: 33.33%;
+    padding: 12px;
+}
+.card-container {
+    display: flex;
+   
+    flex-wrap: wrap;
+}
+.fs-match-card {
+    height: 100px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 16px 20px;
+    display: flex;
+}
+
+.card-icon img {
+    max-width: 50%;
+    border: 0;
+}
+
+.fs-match-card .card-detail {
+    display: flex;
+    /* flex: 1 1; */
+    flex-direction: column;
+    min-width: 0;
+}
+.fs-match-card .card-detail .card-title {
+    font-size: 14px;
+    display: -webkit-box;
+    /* -webkit-line-clamp: 1; */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-shrink: 0;
+    max-height: 40px;
+}
+.fs-match-card .card-detail.center {
+    justify-content: center;
+}
