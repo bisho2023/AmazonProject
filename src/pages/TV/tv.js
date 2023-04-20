@@ -118,9 +118,21 @@ useEffect(()=>{
                   /></p>
                
 
-                  <button
-                    className="btn btn-primary"
-
+               <button
+                    style={{
+                      fontSize: "14px",
+                      borderWidth: "3px",
+                      borderRadius: "10px",
+                      borderStyle: "solid",
+                      padding: "0 20px 0 20px",
+                      marginTop: "1.2rem",
+                      marginLeft: "4rem",
+                      // position: "absolute",
+                      // left: "30%",
+                      // bottom: "0",
+                      // marginBottom: "1rem",
+                    }}
+                    className="btn btn-warning"
                     onClick={() => {
                       dispatch(changeCards([...cards, prd]));
                       dispatch(changeCounter(counter + 1));
