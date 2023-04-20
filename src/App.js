@@ -25,8 +25,11 @@ import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAuth } from "./context/GlobalProvider";
 import CheckOut from "./pages/order/CheckOut";
+
+import Help from "./pages/help/help";
 import PageNotFound from "./pages/pagenotfound/pageNotFound";
 import { ToastContainer } from "react-toastify";
+
 
 function App() {
   const { dispatch } = useAuth();
@@ -65,10 +68,10 @@ function App() {
         <Route path="/videos" element={<Videos />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/checkout" element={<CheckOut />} />
-        {/* <Route path="*" component={<PageNotFound/> } /> */}
+        <Route path="/signup"element={<Signup/>}/>
+        <Route path="/login"element={<Login/>}/>
+        <Route path="/checkout"element={<CheckOut />}/>
+        <Route path="/help"element={<Help />}/>
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>

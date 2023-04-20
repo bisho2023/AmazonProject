@@ -10,11 +10,17 @@ import { db } from '../../firebase';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import cookies from 'js-cookie';
+import ReactStars from "react-rating-stars-component";
 
 
 
 
 const Videos = () => {
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    alert(`the rating is ${newRating}`)
+
+  };
 
   
    //language
@@ -39,7 +45,7 @@ const Videos = () => {
   // }
   const productsRef = collection(db, "products");
   const fetchPost = async () => {
-    const q = query(productsRef, where("category", "==", "videos"));
+    const q = query(productsRef, where("category", "==", "game"));
     const querySnapshot = await getDocs(q);
     const products = [];
     querySnapshot.forEach((doc) => {
@@ -114,6 +120,15 @@ const Videos = () => {
                   <h3>{t("price")} {prd.price}</h3>
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                  <p><ReactStars
+                             index={index}
+                             count={5}
+                             onChange={ratingChanged}
+                             value={index+1}
+                           size={24}
+                           isHalf={true} 
+                         activeColor="#ffd700"
+                  /></p>
                   <button
                     style={{
                       fontSize: "14px",
