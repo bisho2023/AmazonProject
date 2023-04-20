@@ -80,8 +80,6 @@ function App() {
         <Route path="/help"element={<Help />}/>
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
-
-
       </Routes>
       <Footer />
     </>
