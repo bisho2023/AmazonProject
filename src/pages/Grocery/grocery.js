@@ -122,14 +122,6 @@ const Grocery = () => {
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <p><ReactStars
-                             index={index}
-                             count={5}
-                             onChange={ratingChanged}
-                             value={index+1}
-                           size={24}
-                           isHalf={true} 
-                         activeColor="#ffd700"
-                  /></p><p><ReactStars
                   index={index}
                   count={5}
                   onChange={ratingChanged}
