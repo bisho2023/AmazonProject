@@ -6,18 +6,16 @@ import changeCards, { changeCounter } from "../../store/action";
 import { collection, getDocs, query, where } from "@firebase/firestore";
 import { db } from "../../firebase";
 
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import cookies from 'js-cookie';
-
-
+import { useTranslation } from "react-i18next";
+import i18next, { use } from "i18next";
+import cookies from "js-cookie";
+import { json } from "react-router-dom";
 
 const Accessories = () => {
+  //language
 
-     //language
-     const currentLanguageCode = cookies.get('i18next') || 'en'
-     const { t } = useTranslation();
-
+  const currentLanguageCode = cookies.get("i18next") || "en";
+  const { t } = useTranslation();
 
   const [accessoriy, setaccessoriy] = useState([]);
   const [categories, setCategory] = useState([]);
@@ -25,6 +23,10 @@ const Accessories = () => {
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
   const dispatch = useDispatch();
+  // useEffect(() => {
+  //   localStorage.setItem("products", JSON.stringify(cards));
+  // }, [cards]);
+  // console.log(cards);
 
   //   const fetchPost = async () => {
   //     await getDocs(collection(db, "accessoriy"))
@@ -75,20 +77,24 @@ const Accessories = () => {
   //     });
   // }, []);
 
+  // useEffect(() => {
+  //   window.localStorage.setItem("cart", JSON.stringify(cards));
+  //   window.localStorage.setItem("count", JSON.stringify(counter));
+  // }, [cards]);
   return (
     <div className="container">
       <div class="row row-cols-1 row-cols-md-3 g-1 d-flex align-items-stretch position-relative">
         {categories.map((cat, index) => {
           return (
             <div key={index}>
-
-              <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
-            <img
-              className="card-img-top "
-              src={cat.image}
-              alt="Card image cap"
-            />
-
+              <h1>
+                {currentLanguageCode === "en" ? `${cat.name}` : `${cat.namear}`}
+              </h1>
+              <img
+                className="card-img-top "
+                src={cat.image}
+                alt="Card image cap"
+              />
             </div>
           );
         })}
@@ -108,10 +114,20 @@ const Accessories = () => {
                 />
 
                 <div class="card-body">
-
-                  <h5 className="card-title">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h5>
-                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
-                  <h3>{t("price")} {prd.price}</h3>
+                  <h5 className="card-title">
+                    {currentLanguageCode === "en"
+                      ? `${prd.name}`
+                      : `${prd.namear}`}
+                  </h5>
+                  <p className="card-text">
+                    <strong> {t("description")}</strong>{" "}
+                    {currentLanguageCode === "en"
+                      ? `${prd.description}`
+                      : `${prd.descriptionar}`}
+                  </p>
+                  <h3>
+                    {t("price")} {prd.price}
+                  </h3>
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <button
@@ -131,7 +147,13 @@ const Accessories = () => {
                     className="btn btn-warning"
                     onClick={() => {
                       dispatch(changeCards([...cards, prd]));
+                      // localStorage.setItem("cart", JSON.stringify(cards));
+
                       dispatch(changeCounter(counter + 1));
+                      // localStorage.setItem(
+                      //   "count",
+                      //   JSON.stringify(counter + 1)
+                      // );
                     }}
                   >
                     {t("addcart")}
