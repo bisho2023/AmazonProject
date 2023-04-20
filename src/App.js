@@ -1,6 +1,6 @@
 // import { Route, Routes } from 'react-router-dom';
 import { Navigate, Route, Routes } from "react-router";
-
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Footer from "./Components/footer/footer";
 import Header from "./Components/header/header";
@@ -28,35 +28,29 @@ import CheckOut from "./pages/order/CheckOut";
 
 import Help from "./pages/help/help";
 import PageNotFound from "./pages/pagenotfound/pageNotFound";
-
-
+import { ToastContainer } from "react-toastify";
 
 
 function App() {
-  const { dispatch } = useAuth()
+  const { dispatch } = useAuth();
   useEffect(() => {
     auth.onAuthStateChanged((authuser) => {
       if (authuser) {
         dispatch({
-
           type: "SET_USER",
           user: authuser,
         });
-
       } else {
         dispatch({
-
           type: "SET_USER",
           user: null,
         });
-
       }
-    }
-    )
-
-  }, [])
+    });
+  }, []);
   return (
     <>
+      <ToastContainer />
       <Header />
       <Navbar />
       {/* <Sidebar /> */}
