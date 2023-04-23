@@ -253,7 +253,7 @@ option:hover{
 }
 
 a{
-    color: white;
+    color: black;
 }
 
 .navigator{
@@ -332,6 +332,7 @@ margin-top: -60vh;
 .img-slide{
     max-width: 100%;
     min-width: 100%;
+    
 }
 
 
