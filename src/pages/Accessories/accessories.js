@@ -120,6 +120,7 @@ const Accessories = () => {
                   alt="Card image cap"
                 />
 
+
                 <div class="card-body">
                   <h5 className="card-title">
                     {currentLanguageCode === "en"
@@ -180,8 +181,8 @@ const Accessories = () => {
           );
         })}
       </div>
-    </div>
-  );
+      </div>
+  ) 
 };
 
 export default Accessories;

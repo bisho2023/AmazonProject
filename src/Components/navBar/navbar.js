@@ -259,6 +259,7 @@ const Navbar = () => {
               >
                 {t("electronics_page")}
               </NavLink>
+
             </li>
 
             <li className="nav-item">

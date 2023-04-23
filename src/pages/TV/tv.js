@@ -17,6 +17,7 @@ import ReactStars from "react-rating-stars-component";
 
 const Tv = () => {
 
+
   //ratind and review
   const ratingChanged = (newRating) => {
     console.log(newRating);
