@@ -1,6 +1,7 @@
 // import { Route, Routes } from 'react-router-dom';
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes, useLocation } from "react-router";
 import "react-toastify/dist/ReactToastify.css";
+
 import "./App.css";
 import Footer from "./Components/footer/footer";
 import Header from "./Components/header/header";
@@ -26,6 +27,7 @@ import { useEffect } from "react";
 import { useAuth } from "./context/GlobalProvider";
 import CheckOut from "./pages/order/CheckOut";
 
+
 import Help from "./pages/help/help";
 import PageNotFound from "./pages/pagenotfound/pageNotFound";
 import { ToastContainer } from "react-toastify";
@@ -46,16 +48,24 @@ function App() {
           user: null,
         });
       }
-    });
-  }, []);
+    }
+    )
+
+  }, [])
+  let location = useLocation();
+  
   return (
     <>
-      <ToastContainer />
-      <Header />
+   
+      {/* <Header /> */}
+      
+      {location.pathname!=='/404' ? <Header/> :null}
+
       <Navbar />
       {/* <Sidebar /> */}
       {/* <Home/> */}
       <Routes>
+     
         <Route path="/" element={<Home />} />
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/clothing" element={<Clothing />} />
@@ -68,14 +78,19 @@ function App() {
         <Route path="/videos" element={<Videos />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/signup"element={<Signup/>}/>
-        <Route path="/login"element={<Login/>}/>
-        <Route path="/checkout"element={<CheckOut />}/>
-        <Route path="/help"element={<Help />}/>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/help" element={<Help/>}></Route>
+        {/* <Route path="*" component={<PageNotFound/> } /> */}
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
+      
       </Routes>
-      <Footer />
+      {location.pathname!=='/404' ? <Footer/> :null}
+    
+      {/* <Footer /> */}
+      
     </>
   );
 }
