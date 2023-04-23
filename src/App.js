@@ -26,8 +26,6 @@ import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAuth } from "./context/GlobalProvider";
 import CheckOut from "./pages/order/CheckOut";
-import PageNotFound from "./pages/pagenotfound/pageNotFound";
-import Help from "./pages/help/help";
 
 
 import Help from "./pages/help/help";
@@ -83,7 +81,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/checkout" element={<CheckOut />} />
-        <Route path="help" element={<Help/>}></Route>
+        <Route path="/help" element={<Help/>}></Route>
         {/* <Route path="*" component={<PageNotFound/> } /> */}
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
