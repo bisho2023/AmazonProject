@@ -7,15 +7,24 @@ import { collection, getDocs, query, where } from "@firebase/firestore";
 import { db } from '../../firebase';
 
 
-import { useTranslation } from 'react-i18next'
-import i18next from 'i18next'
-import cookies from 'js-cookie'
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+import ReactStars from "react-rating-stars-component";
 
 
 
 const Tv = () => {
 
-  
+
+  //ratind and review
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    alert(`the rating is ${newRating}`)
+
+  };
+
     //language
     const currentLanguageCode = cookies.get('i18next') || 'en'
     const { t } = useTranslation();
@@ -71,6 +80,7 @@ useEffect(()=>{
     <div className="container">
       <div className="row row-cols-1 row-cols-md-3 g-4">
       {categories.map((cat, index) => {
+
           return (
             <div key={index}>
               <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
@@ -97,7 +107,32 @@ useEffect(()=>{
                   <p className="card-text"><strong> {t("description")}</strong>  {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
                   <h3>{t("price")} {prd.price}</h3>
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
-                  <button style={{ fontSize:"14px",borderWidth:"3px",borderRadius:"10px",borderStyle:"solid",padding:"0 20px 0 20px"}}
+
+                  <p><ReactStars
+                             index={index}
+                             count={5}
+                             onChange={ratingChanged}
+                             value={index+1}
+                           size={24}
+                           isHalf={true} 
+                         activeColor="#ffd700"
+                  /></p>
+               
+
+               <button
+                    style={{
+                      fontSize: "14px",
+                      borderWidth: "3px",
+                      borderRadius: "10px",
+                      borderStyle: "solid",
+                      padding: "0 20px 0 20px",
+                      marginTop: "1.2rem",
+                      marginLeft: "4rem",
+                      // position: "absolute",
+                      // left: "30%",
+                      // bottom: "0",
+                      // marginBottom: "1rem",
+                    }}
                     className="btn btn-warning"
                     onClick={() => {
                       dispatch(changeCards([...cards, prd]));
@@ -113,6 +148,7 @@ useEffect(()=>{
         })}
       </div>
     </div>
+
   );
 };
 

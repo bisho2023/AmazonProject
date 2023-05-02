@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 
-
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -14,37 +13,34 @@ import Logo from "../images/Logo.png";
 
 import { addDoc, collection, getDocs, doc, setDoc } from "@firebase/firestore";
 
-
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import cookies from 'js-cookie';
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import cookies from "js-cookie";
 
 const languages = [
   {
-    code: 'en',
-    name: 'English',
-    country_code: 'gb',
+    code: "en",
+    name: "English",
+    country_code: "gb",
   },
   {
-    code: 'ar',
-    name: 'العربية',
-    dir: 'rtl',
-    country_code: 'sa',
+    code: "ar",
+    name: "العربية",
+    dir: "rtl",
+    country_code: "sa",
   },
-]
-
+];
 
 export const Signup = () => {
-
-      //language
-  const currentLanguageCode = cookies.get('i18next') || 'en'
-  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
-  const { t } = useTranslation()
+  //language
+  const currentLanguageCode = cookies.get("i18next") || "en";
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    console.log('Setting page stuff')
-    document.body.dir = currentLanguage.dir || 'ltr'
-    document.title = t('app_title')
+    console.log("Setting page stuff");
+    document.body.dir = currentLanguage.dir || "ltr";
+    document.title = t("app_title");
   }, [currentLanguage, t]);
 
   const localUser = JSON.parse(localStorage.getItem("userName"));
@@ -104,7 +100,6 @@ export const Signup = () => {
         <img className="login-logo" src={Logo} alt="logo-img" />
       </Link>
       <div className="login-container">
-
         <h1>{t("signup")}</h1>
         <form onSubmit={handleSignup}>
           <h5>{t("username")}</h5>
@@ -139,14 +134,11 @@ export const Signup = () => {
             value={password}
           ></input>
           <button className="login-signInBtn" type="submit">
-          {t("signup")}
+            {t("signup")}
           </button>
-          <p>
-          {t("rules")}
-          </p>
+          <p>{t("rules")}</p>
           <button className="login-registerBtn" onClick={signIn}>
-          {t("acount2")}
-
+            {t("acount2")}
           </button>
         </form>
       </div>

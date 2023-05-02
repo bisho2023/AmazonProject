@@ -11,12 +11,18 @@ import { db } from "../../firebase";
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import cookies from 'js-cookie';
+import ReactStars from "react-rating-stars-component";
 
 
 
 
 
 const Grocery = () => {
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    alert(`the rating is ${newRating}`)
+
+  };
 
   
    const currentLanguageCode = cookies.get('i18next') || 'en'
@@ -74,7 +80,8 @@ const Grocery = () => {
         {categories.map((cat, index) => {
           return (
             <div key={index} className="d-flex">
-              {/* <h1 className="d-block">{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
+
+             {/* <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
 
               
             <img
@@ -114,6 +121,15 @@ const Grocery = () => {
 
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                  <p><ReactStars
+                  index={index}
+                  count={5}
+                  onChange={ratingChanged}
+                  value={index+1}
+                size={24}
+                isHalf={true} 
+              activeColor="#ffd700"
+       /></p>
                   <button
                     style={{
                       fontSize: "14px",
@@ -137,7 +153,7 @@ const Grocery = () => {
                     {t("addcart")}
 
                   </button>
-                  <h1>helllo world</h1>
+                  
                 </div>
               </div>
             </div>
