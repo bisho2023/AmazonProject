@@ -18,7 +18,6 @@ import Tv from "./pages/TV/tv";
 import Videos from "./pages/Videos/videos";
 import cards from "./pages/cards/cards";
 import Cards from "./pages/cards/cards";
-import Help from "./pages/help/help";
 import Sidebar from "./Components/sidepar/sidebar";
 import Search from "./pages/search/search";
 import { Signup } from "./pages/signup/signup";
@@ -27,12 +26,10 @@ import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAuth } from "./context/GlobalProvider";
 import CheckOut from "./pages/order/CheckOut";
-import PageNotFound from "./pages/pagenotfound/pageNotFound"
 
 
 import Help from "./pages/help/help";
 import PageNotFound from "./pages/pagenotfound/pageNotFound";
-import { ToastContainer } from "react-toastify";
 import Userprofile from "./pages/userprofile/userprofile";
 
 

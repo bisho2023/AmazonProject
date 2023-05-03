@@ -4,9 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// import Logo from "../images/header-logo.png";
-// import searchIcon from "../images/icons/searchIcon.png";
-// import shoopingCart from "../images/icons/shopping-cart.png";
 import "./header.css";
 import { auth } from "../../firebase";
 import { useAuth } from "../../context/GlobalProvider";
@@ -14,8 +11,6 @@ import { useAuth } from "../../context/GlobalProvider";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookies from "js-cookie";
-
-import { FaUser } from 'react-icons/fa';
 
 const languages = [
   {
@@ -164,7 +159,7 @@ const Header = () => {
           className="btn btn-link"
           type="button"
         >
-          <FaUser />
+          {/* <FaUser /> */}
         </button>
         </Link>
 
