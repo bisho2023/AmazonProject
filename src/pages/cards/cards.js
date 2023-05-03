@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import changeCards from "../../store/action";
+import changeCards, { changeQuantity } from "../../store/action";
 import { changeCounter } from "../../store/action";
 import "./cards.css";
 import { useAuth } from "../../context/GlobalProvider";
@@ -13,6 +13,7 @@ import cookies from "js-cookie";
 
 const Cards = () => {
   //language
+  // const [inputText, setInputText] = useState(1);
   const currentLanguageCode = cookies.get("i18next") || "en";
   const { t } = useTranslation();
 
@@ -20,12 +21,28 @@ const Cards = () => {
   const { user } = useAuth();
   const getBasketTotal = (cards) =>
     cards.reduce((amount, item) => {
-      return amount + item.price;
+      return amount + item.price * quant;
     }, 0);
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card);
+  // const [quantity, setQuantity] = useState(1);
   const counter = useSelector((state) => state.count);
+  const quant = useSelector((state) => state.quantity);
+  // const handleChange = (e) => {
+  //   // 👇 Store the input value to local state
+  //   setInputText(e.target.value);
+  // };
+  // const handleDecremet = () => {
+  //   if (quantity > 1) {
+  //     setQuantity((prevCount) => prevCount - 1);
+  //   }
+  // };
 
+  // const handleIncrement = () => {
+  //   if (quantity < 10) {
+  //     setQuantity((prevCount) => prevCount + 1);
+  //   }
+  // };
   return (
     <>
       <div className="container-fluid ">
@@ -49,8 +66,51 @@ const Cards = () => {
                         : `${prd.descriptionar}`}
                     </p>
                     <p className="checkoutProduct-price">
-                      <strong>$ </strong>
-                      <strong> {prd.price}</strong>
+                      <strong>$</strong>
+                      <strong>{prd.price}</strong>
+
+                      <div className="input-group">
+                        <button
+                          type="button"
+                          // onClick={() => {
+                          //   handleDecremet();
+                          // }}
+                          onClick={() => {
+                            const item = cards.findIndex(
+                              (product) => product.name === prd.name
+                            );
+
+                            dispatch(changeQuantity(quant - 1));
+                          }}
+                          className="input-group-text"
+                        >
+                          -
+                        </button>
+
+                        <div className="form-control text-center">{quant}</div>
+                        <button
+                          type="button"
+                          // onClick={handleIncrement}
+                          onClick={() => {
+                            const item = cards.findIndex(
+                              (product) => product.name === prd.name
+                            );
+
+                            dispatch(changeQuantity(quant + 1));
+                          }}
+                          className="input-group-text"
+                        >
+                          +
+                        </button>
+                      </div>
+                      {/* <p>
+                        <strong>Qty</strong> :{" "}
+                        <input
+                          type="number"
+                          onChange={handleChange}
+                          value={inputText}
+                        ></input>
+                      </p> */}
                     </p>
 
                     <button
@@ -72,6 +132,7 @@ const Cards = () => {
                     >
                       {t("remove")}
                     </button>
+                    <hr></hr>
                   </div>
                 </div>
               );

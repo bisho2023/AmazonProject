@@ -63,4 +63,26 @@
       color: #111;
       cursor: pointer;
     }
-    
+  .input-group
+    {
+      width: 100px;
+      
+    }
+
+    .input-group .form-control
+    {
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .input-group button{
+      background-color: #f0c14b;
+      width: 10px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+    }
