@@ -262,6 +262,7 @@ const Navbar = () => {
               >
                 {t("electronics_page")}
               </NavLink>
+
             </li>
 
             <li className="nav-item">
@@ -354,7 +355,7 @@ const Navbar = () => {
                 style={({ isActive }) =>
                   isActive ? { color: "orange" } : { color: "white" }
                 }
-                to="assd"
+                to="/help"
               >
                 {t("help_page")}
               </NavLink>
@@ -366,7 +367,7 @@ const Navbar = () => {
                 style={({ isActive }) =>
                   isActive ? { color: "orange" } : { color: "white" }
                 }
-                to="assd"
+                to="404"
               >
                 {t("amazon.eg")}
               </NavLink>

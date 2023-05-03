@@ -14,6 +14,7 @@ import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 
 const Tv = () => {
+
   //ratind and review
   const ratingChanged = (newRating) => {
     console.log(newRating);
