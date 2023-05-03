@@ -117,15 +117,19 @@ export const Signup = () => {
             type="email"
             className="form-control"
             required
+             pattern="[a-zA-Z0-9]+@[a-zA-Z0-9-]+(?:\.com)"
+           
+               
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           ></input>
-          <h5>{t("password")}</h5>
+          <h5>{t("password)")}</h5>
 
           <input
             type="password"
             className="form-control"
             required
+           minLength={6}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           ></input>

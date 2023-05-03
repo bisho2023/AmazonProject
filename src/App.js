@@ -28,8 +28,8 @@ import { useAuth } from "./context/GlobalProvider";
 import CheckOut from "./pages/order/CheckOut";
 
 
-import Help from "./pages/help/help";
-import PageNotFound from "./pages/pagenotfound/pageNotFound";
+
+// import PageNotFound from "./pages/pagenotfound/pageNotFound";
 import { ToastContainer } from "react-toastify";
 import Details from "./pages/details/details";
 
