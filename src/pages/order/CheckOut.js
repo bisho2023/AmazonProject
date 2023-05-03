@@ -14,6 +14,7 @@ import Alert from 'react-bootstrap/Alert';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import cookies from 'js-cookie';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const languages = [
@@ -48,7 +49,7 @@ const CheckOut = () => {
 
 
     let checker = false;
-
+    const navigate = useNavigate();
     const { user } = useAuth();
     const getBasketTotal = (cards) =>
         cards.reduce((amount, item) => {
@@ -99,10 +100,10 @@ const CheckOut = () => {
 
     return (
         <div className='container-fluid my-3'>
-            <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button>
+            {/* <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button> */}
             {/* <button type='submit' className='btn btn-success' onClick={handelTogal}>
                 </button> */}
-            <div className='row'>
+                 {user ? <div className='row'>
                 <div className="accordion col-lg-8 col-md-6" id="accordionExample">
                     <div className="accordion-item">
 
@@ -220,7 +221,8 @@ const CheckOut = () => {
 
 
 
-            </div>
+            </div> : navigate("/login")}
+            
 
         </div>
     );
