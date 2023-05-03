@@ -1,7 +1,7 @@
 import React,{useEffect} from "react";
 import "./bootstrap.css";
 import "./style.css";
-
+import { NavLink } from "react-router-dom";
 
 
 
@@ -174,9 +174,14 @@ const Home = () => {
                 </div>
 
                 <div>
-                  <a href="#" className="card-a text-decoration-none">
-                    {t("try_prime")}
-                  </a>
+                  <NavLink
+                className="card-a text-decoration-none"
+                to="/accessories"
+              >
+                {t("try_prime")}
+
+                </NavLink>
+
                 </div>
               </div>
             </div>
@@ -199,9 +204,16 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a  href="#" className="card-a text-decoration-none">
-                   {t("see_more")}
-                  </a>
+                  <NavLink
+                       className="card-a text-decoration-none"
+                       to="/grocery"
+                 >
+                  {t("try_prime")}
+
+                  </NavLink>
+
+
+
                 </div>
               </div>
             </div>
@@ -268,9 +280,14 @@ const Home = () => {
                 </div>
 
                 <div>
-                  <a href="#" className="card-a text-decoration-none ">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                       className="card-a text-decoration-none"
+                       to="/fashion"
+                     >
+                   {t("see_more")}
+
+                  </NavLink>
+
                 </div>
               </div>
             </div>
@@ -294,9 +311,12 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                   {t("discover_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/grocery"
+                       >
+                         {t("discover_more")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -371,9 +391,13 @@ const Home = () => {
                 </div>
 
                 <div>
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("try_prime")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/tv"
+                       >
+                         {t("try_prime")}
+                </NavLink>
+
                 </div>
               </div>
             </div>
@@ -396,9 +420,13 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/videos"
+                       >
+                         {t("see_more")}
+                </NavLink>
+
                 </div>
               </div>
             </div>
@@ -465,9 +493,12 @@ const Home = () => {
                 </div>
 
                 <div>
-                  <a href="#" className="card-a text-decoration-none ">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/accessories"
+                       >
+                         {t("see_more")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -491,9 +522,12 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("discover_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/electronics"
+                       >
+                          {t("discover_more")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -517,9 +551,12 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/mobile"
+                       >
+                         {t("see_more")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -543,9 +580,12 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/computer"
+                       >
+                         {t("see_more")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -569,9 +609,13 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/accessories"
+                       >
+                         {t("see_more")}
+                </NavLink>
+
                 </div>
               </div>
             </div>
@@ -638,9 +682,12 @@ const Home = () => {
                 </div>
 
                 <div>
-                  <a href="#" className="card-a text-decoration-none ">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/accessories"
+                       >
+                         {t("see_more")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -715,9 +762,12 @@ const Home = () => {
                 </div>
 
                 <div>
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("try_prime")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/tv"
+                       >
+                        {t("try_prime")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -740,9 +790,12 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/grocery"
+                       >
+                       {t("see_more")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -809,9 +862,12 @@ const Home = () => {
                 </div>
 
                 <div>
-                  <a href="#" className="card-a text-decoration-none ">
-                  {t("see_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/clothing"
+                       >
+                       {t("see_more")}
+                </NavLink>
                 </div>
               </div>
             </div>
@@ -835,9 +891,12 @@ const Home = () => {
                 </div>
 
                 <div className="">
-                  <a href="#" className="card-a text-decoration-none">
-                  {t("discover_more")}
-                  </a>
+                  <NavLink
+                    className="card-a text-decoration-none"
+                    to="/grocery"
+                       >
+                       {t("discover_more")}
+                </NavLink>
                 </div>
               </div>
             </div>

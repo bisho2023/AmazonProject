@@ -131,7 +131,7 @@ const Videos = () => {
                         index={index}
                         count={5}
                         onChange={ratingChanged}
-                        value={index + 1}
+                        value={prd.rate}
                         size={24}
                         isHalf={true}
                         activeColor="#ffd700"
