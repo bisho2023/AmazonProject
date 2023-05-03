@@ -11,9 +11,10 @@ import i18next, { use } from "i18next";
 import cookies from "js-cookie";
 import { json } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import Spinner from 'react-bootstrap/Spinner';
 
 const Accessories = () => {
- const ratingChanged = (newRating) => {
+  const ratingChanged = (newRating) => {
     console.log(newRating);
     alert(`the rating is ${newRating}`)
 
@@ -76,122 +77,120 @@ const Accessories = () => {
     setaccessoriy(products);
   }
 
+
   useEffect(() => {
     fetchPost();
     fetchcat();
   }, []);
-
-  // useEffect(() => {
-  //   axioss
-  //     .get("accessoriy")
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setProduct(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem("cart", JSON.stringify(cards));
-  //   window.localStorage.setItem("count", JSON.stringify(counter));
-  // }, [cards]);
   return (
     <div className="container">
-      <div class="row row-cols-1 row-cols-md-3 g-1 d-flex align-items-stretch position-relative">
-        {categories.map((cat, index) => {
-          return (
-            <div key={index} className="w-100">
-              <h1>
-                {currentLanguageCode === "en" ? `${cat.name}` : `${cat.namear}`}
-              </h1>
-              <img
-                className="card-img-top "
-                src={cat.image}
-                alt="Card image cap"
-              />
-            </div>
-          );
-        })}
-        {accessoriy.map((prd, index) => {
-          return (
-            <div class="col-md-4 my-3" key={index}>
-              <div class="card">
+      
+      {(accessoriy === [])
+        ? (<Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>)
+        : (<div class="row row-cols-1 row-cols-md-3 g-1 d-flex align-items-stretch position-relative">
+          {categories.map((cat, index) => {
+            return (
+              <div key={index} className="w-100">
+                <h1>
+                  {currentLanguageCode === "en" ? `${cat.name}` : `${cat.namear}`}
+                </h1>
                 <img
-                  style={{
-                    width: "100%",
-                    height: "20rem",
-                    objectFit: "contain",
-                  }}
-                  className="card-img-top"
-                  src={prd.image}
+                  className="card-img-top "
+                  src={cat.image}
                   alt="Card image cap"
                 />
-
-
-                <div class="card-body">
-                  <h5 className="card-title">
-                    {currentLanguageCode === "en"
-                      ? `${prd.name}`
-                      : `${prd.namear}`}
-                  </h5>
-                  <p className="card-text">
-                    <strong> {t("description")}</strong>{" "}
-                    {currentLanguageCode === "en"
-                      ? `${prd.description}`
-                      : `${prd.descriptionar}`}
-                  </p>
-                  <h3>
-                    {t("price")} {prd.price}
-                  </h3>
-
-                  {/* <h3>Rate : {prd.rating.rate}</h3> */}
-                  <p><ReactStars
-                             index={index}
-                             count={5}
-                             onChange={ratingChanged}
-                             value={index+1}
-                           size={24}
-                           isHalf={true} 
-                         activeColor="#ffd700"
-                  /></p>
-                  <button
+              </div>
+            );
+          })}
+          <div className="d-block w-100  mt-2">
+            <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
+              <option className="bg-light "  >Filter by Price</option>
+              <option className="bg-light " value="50">less than 50</option>
+              <option className="bg-light " value="100">up to 50</option>
+              <option className="bg-light " value="9999999">up to 100</option>
+            </select>
+          </div>
+          {accessoriy.map((prd, index) => {
+            return (
+              <div class="col-md-4 my-3" key={index}>
+                <div class="card">
+                  <img
                     style={{
-                      fontSize: "14px",
-                      borderWidth: "3px",
-                      borderRadius: "10px",
-                      borderStyle: "solid",
-                      padding: "0 20px 0 20px",
-                      marginTop: "1.2rem",
-                      marginLeft: "4rem",
-                      // position: "absolute",
-                      // left: "30%",
-                      // bottom: "0",
-                      // marginBottom: "1rem",
+                      width: "100%",
+                      height: "20rem",
+                      objectFit: "contain",
                     }}
-                    className="btn btn-warning"
-                    onClick={() => {
-                      dispatch(changeCards([...cards, prd]));
-                      // localStorage.setItem("cart", JSON.stringify(cards));
+                    className="card-img-top"
+                    src={prd.image}
+                    alt="Card image cap"
+                  />
 
-                      dispatch(changeCounter(counter + 1));
-                      // localStorage.setItem(
-                      //   "count",
-                      //   JSON.stringify(counter + 1)
-                      // );
-                    }}
-                  >
-                    {t("addcart")}
-                  </button>
+
+                  <div class="card-body">
+                    <h5 className="card-title">
+                      {currentLanguageCode === "en"
+                        ? `${prd.name}`
+                        : `${prd.namear}`}
+                    </h5>
+                    <p className="card-text">
+                      <strong> {t("description")}</strong>{" "}
+                      {currentLanguageCode === "en"
+                        ? `${prd.description}`
+                        : `${prd.descriptionar}`}
+                    </p>
+                    <h3>
+                      {t("price")} {prd.price}
+                    </h3>
+
+                    {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                    <p><ReactStars
+                      index={index}
+                      count={5}
+                      onChange={ratingChanged}
+                      value={index + 1}
+                      size={24}
+                      isHalf={true}
+                      activeColor="#ffd700"
+                    /></p>
+                    <button
+                      style={{
+                        fontSize: "14px",
+                        borderWidth: "3px",
+                        borderRadius: "10px",
+                        borderStyle: "solid",
+                        padding: "0 20px 0 20px",
+                        marginTop: "1.2rem",
+                        marginLeft: "4rem",
+                        // position: "absolute",
+                        // left: "30%",
+                        // bottom: "0",
+                        // marginBottom: "1rem",
+                      }}
+                      className="btn btn-warning"
+                      onClick={() => {
+                        dispatch(changeCards([...cards, prd]));
+                        // localStorage.setItem("cart", JSON.stringify(cards));
+
+                        dispatch(changeCounter(counter + 1));
+                        // localStorage.setItem(
+                        //   "count",
+                        //   JSON.stringify(counter + 1)
+                        // );
+                      }}
+                    >
+                      {t("addcart")}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-      </div>
-  ) 
+            );
+          })}
+        </div>)}
+
+    </div>
+  )
 };
 
 export default Accessories;

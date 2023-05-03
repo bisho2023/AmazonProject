@@ -74,7 +74,9 @@ const OrderDetalis = () => {
             className="h-100 gradient-custom"
             style={{ backgroundColor: "#eee" }}
         >
-            {/* { user ?  : navigate("/login")} */}
+            <h1>{"  "}.
+            
+            </h1>
             { orderDetails.map((order, index) => {
                 return (
                     <MDBContainer className="py-5 h-100">
@@ -121,7 +123,7 @@ const OrderDetalis = () => {
                                                                 md="2"
                                                                 className="text-center d-flex justify-content-center align-items-center"
                                                             >
-                                                                <p className="text-muted mb-0 small btn btn-primary">{prod.status}</p>
+                                                                <p className="text-muted mb-0 small btn btn-primary">{order.status}</p>
                                                             </MDBCol>
                                                             <MDBCol
                                                                 md="2"
