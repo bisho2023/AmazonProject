@@ -2,34 +2,26 @@ import React, { useEffect, useState } from "react";
 import axioss from "../../axios/axios";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards, { changeCounter } from "../../store/action";
-
+import "./grocery.css";
 
 import { collection, getDocs, query, where } from "@firebase/firestore";
 import { db } from "../../firebase";
 
-
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import cookies from 'js-cookie';
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import cookies from "js-cookie";
 import ReactStars from "react-rating-stars-component";
-
-
-
-
+import { Link } from "react-router-dom";
 
 const Grocery = () => {
   const ratingChanged = (newRating) => {
     console.log(newRating);
-    alert(`the rating is ${newRating}`)
-
+    alert(`the rating is ${newRating}`);
   };
 
-  
-   const currentLanguageCode = cookies.get('i18next') || 'en'
-   const { t } = useTranslation();
- 
+  const currentLanguageCode = cookies.get("i18next") || "en";
+  const { t } = useTranslation();
 
-   
   const [grocery, setgrocery] = useState([]);
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
@@ -80,27 +72,26 @@ const Grocery = () => {
         {categories.map((cat, index) => {
           return (
             <div key={index} className="d-flex">
+              {/* <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
 
-             {/* <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
-
-              
-            <img
-              className="card-img-top w-50"
-              src={cat.image[1]}
-              alt="Card image cap"
-            />
-            <img
-              className="card-img-top w-50"
-              src={cat.image[index]}
-              alt="Card image cap"
-            />
-
+              <img
+                className="card-img-top w-50"
+                src={cat.image[1]}
+                alt="Card image cap"
+              />
+              <img
+                className="card-img-top w-50"
+                src={cat.image[index]}
+                alt="Card image cap"
+              />
             </div>
           );
         })}
         {grocery.map((prd, index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
+
+<Link to={`/details/${prd.name}`}>
               <div className="card">
                 <img
                   style={{
@@ -131,31 +122,59 @@ const Grocery = () => {
               activeColor="#ffd700"
        /></p>
                   <button
-                    style={{
-                      fontSize: "14px",
-                      borderWidth: "3px",
-                      borderRadius: "10px",
-                      borderStyle: "solid",
-                      padding: "0 20px 0 20px",
-                      marginTop: "1.2rem",
-                      marginLeft: "4rem",
-                      // position: "absolute",
-                      // left: "30%",
-                      // bottom: "0",
-                      // marginBottom: "1rem",
-                    }}
-                    className="btn btn-warning"
-                    onClick={() => {
-                      dispatch(changeCards([...cards, prd]));
-                      dispatch(changeCounter(counter + 1));
-                    }}
-                  >
-                    {t("addcart")}
 
-                  </button>
-                  
+                    style={{
+                      width: "100%",
+                      height: "20rem",
+                      objectFit: "contain",
+                    }}
+                    className="card-img-top"
+                    src={prd.image}
+                    alt="Card image cap"
+                  />
+
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      {currentLanguageCode === "en"
+                        ? `${prd.name}`
+                        : `${prd.namear}`}
+                    </h5>
+                    <p className="card-text">
+                      <strong> {t("description")}</strong>{" "}
+                      {currentLanguageCode === "en"
+                        ? `${prd.description}`
+                        : `${prd.descriptionar}`}
+                    </p>
+                    <h3>
+                      {t("price")} {prd.price}
+                    </h3>
+
+                    {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                    <p>
+                      <ReactStars
+                        index={index}
+                        count={5}
+                        onChange={ratingChanged}
+                        value={index + 1}
+                        size={24}
+                        isHalf={true}
+                        activeColor="#ffd700"
+                      />
+                    </p>
+                    <p>
+                      <ReactStars
+                        index={index}
+                        count={5}
+                        onChange={ratingChanged}
+                        value={index + 1}
+                        size={24}
+                        isHalf={true}
+                        activeColor="#ffd700"
+                      />
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           );
         })}
