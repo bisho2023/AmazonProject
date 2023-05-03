@@ -98,7 +98,7 @@ const Videos = () => {
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {categories.map((cat, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="w-100">
 
               <h1>{currentLanguageCode === 'en' ? `${cat.name}` : `${cat.namear}`}</h1>
               <img

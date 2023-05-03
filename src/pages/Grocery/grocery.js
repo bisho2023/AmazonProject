@@ -97,7 +97,7 @@ const Grocery = () => {
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {categories.map((cat, index) => {
           return (
-            <div key={index} className="d-flex">
+            <div key={index} className="d-flex w-100" >
               <img
                 className="card-img-top w-50"
                 src={cat.image[1]}

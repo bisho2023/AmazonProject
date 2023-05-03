@@ -16,9 +16,9 @@ const Mobile = () => {
     alert(`the rating is ${newRating}`)
 
   };
-     //language
-     const currentLanguageCode = cookies.get('i18next') || 'en'
-     const { t } = useTranslation();
+  //language
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const { t } = useTranslation();
 
 
   const [Mobile, setMobile] = useState([]);
@@ -31,12 +31,12 @@ const Mobile = () => {
   // const [sort, setSort] = useState(false);
 
   const productsRef = collection(db, "products");
-  const fetchPost = async ()=>{
+  const fetchPost = async () => {
     const q = query(productsRef, where("category", "==", "mobile"));
     const querySnapshot = await getDocs(q);
-     const products = []; 
-     querySnapshot.forEach((doc) => { products.push(doc.data()); });
-     setMobile(products);
+    const products = [];
+    querySnapshot.forEach((doc) => { products.push(doc.data()); });
+    setMobile(products);
   }
   const categoryRef = collection(db, "category");
   const fetchcat = async () => {
@@ -80,15 +80,17 @@ const Mobile = () => {
   return (
     <div className="container">
       <div className="row row-cols-1 row-cols-md-3 g-4">
-      {categories.map((cat, index) => {
+        {categories.map((cat, index) => {
           return (
-            <div key={index}>
-              <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
-            <img
-              className="card-img-top w-100"
-              src={cat.image}
-              alt="Card image cap"
-            />
+            <div key={index} className="w-100">
+              <h1>{currentLanguageCode === 'en' ? `${cat.name}` : `${cat.namear}`}</h1>
+              <div >
+                <img
+                  className="card-img-top"
+                  src={cat.image}
+                  alt="Card image cap"
+                />
+              </div>
             </div>
           )
         })}
@@ -99,9 +101,9 @@ const Mobile = () => {
             <option className="bg-light " value="100">up to 50</option>
             <option className="bg-light " value="9999999">up to 100</option>
           </select>
-      </div>
+        </div>
 
-        {Mobile.map((prd,index) => {
+        {Mobile.map((prd, index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
               <div className="card">
@@ -118,19 +120,19 @@ const Mobile = () => {
 
                 <div className="card-body">
 
-                  <h5 className="card-title">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h5>
-                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <h5 className="card-title">{currentLanguageCode === 'en' ? `${prd.name}` : `${prd.namear}`}</h5>
+                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode === 'en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
                   <h3>{t("price")} {prd.price}</h3>
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <p><ReactStars
-                             index={index}
-                             count={5}
-                             onChange={ratingChanged}
-                             value={index+1}
-                           size={24}
-                           isHalf={true} 
-                         activeColor="#ffd700"
+                    index={index}
+                    count={5}
+                    onChange={ratingChanged}
+                    value={index + 1}
+                    size={24}
+                    isHalf={true}
+                    activeColor="#ffd700"
                   /></p>
                   <button
                     style={{

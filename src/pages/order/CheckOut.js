@@ -103,7 +103,8 @@ const CheckOut = () => {
             {/* <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button> */}
             {/* <button type='submit' className='btn btn-success' onClick={handelTogal}>
                 </button> */}
-                 {user ? <div className='row'>
+                 {/* {user ?  : navigate("/login")} */}
+                 <div className='row'>
                 <div className="accordion col-lg-8 col-md-6" id="accordionExample">
                     <div className="accordion-item">
 
@@ -221,7 +222,7 @@ const CheckOut = () => {
 
 
 
-            </div> : navigate("/login")}
+            </div>
             
 
         </div>

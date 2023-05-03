@@ -91,7 +91,7 @@ const Tv = () => {
         {categories.map((cat, index) => {
 
           return (
-            <div key={index}>
+            <div key={index} className="w-100">
               <h1>{currentLanguageCode === 'en' ? `${cat.name}` : `${cat.namear}`}</h1>
               <img
                 className="card-img-top "

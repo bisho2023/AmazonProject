@@ -102,7 +102,7 @@ const Accessories = () => {
       <div class="row row-cols-1 row-cols-md-3 g-1 d-flex align-items-stretch position-relative">
         {categories.map((cat, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="w-100">
               <h1>
                 {currentLanguageCode === "en" ? `${cat.name}` : `${cat.namear}`}
               </h1>
