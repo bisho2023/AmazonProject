@@ -1,0 +1,15 @@
+.card:hover
+{
+    text-decoration: none;
+    color: black;
+}
+.card link:hover
+{
+    text-decoration: none;
+
+}
+
+.card-text{
+    height: 50px;
+    overflow: hidden;
+}

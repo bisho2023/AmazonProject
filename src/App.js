@@ -29,7 +29,7 @@ import CheckOut from "./pages/order/CheckOut";
 import Help from "./pages/help/help";
 import PageNotFound from "./pages/pagenotfound/pageNotFound";
 import { ToastContainer } from "react-toastify";
-
+import Details from "./pages/details/details";
 
 function App() {
   const { dispatch } = useAuth();
@@ -68,11 +68,13 @@ function App() {
         <Route path="/videos" element={<Videos />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/signup"element={<Signup/>}/>
-        <Route path="/login"element={<Login/>}/>
-        <Route path="/checkout"element={<CheckOut />}/>
-        <Route path="/help"element={<Help />}/>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/details/:name" element={<Details />} />
+        <Route path="/help" element={<Help />} />
         <Route path="/404" element={<PageNotFound />} />
+
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
       <Footer />
