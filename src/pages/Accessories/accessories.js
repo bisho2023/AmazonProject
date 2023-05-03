@@ -106,48 +106,9 @@ const Accessories = () => {
         {accessoriy.map((prd, index) => {
           return (
             <div class="col-md-4 my-3" key={index}>
-
- <Link to={`/details/${prd.name}`}>
-              <div class="card">
-                <img
-                  style={{
-                    width: "100%",
-                    height: "20rem",
-                    objectFit: "contain",
-                  }}
-                  className="card-img-top"
-                  src={prd.image}
-                  alt="Card image cap"
-                />
-
-
-                <div class="card-body">
-                  <h5 className="card-title">
-                    {currentLanguageCode === "en"
-                      ? `${prd.name}`
-                      : `${prd.namear}`}
-                  </h5>
-                  <p className="card-text">
-                    <strong> {t("description")}</strong>{" "}
-                    {currentLanguageCode === "en"
-                      ? `${prd.description}`
-                      : `${prd.descriptionar}`}
-                  </p>
-                  <h3>
-                    {t("price")} {prd.price}
-                  </h3>
-
-                  {/* <h3>Rate : {prd.rating.rate}</h3> */}
-                  <p><ReactStars
-                             index={index}
-                             count={5}
-                             onChange={ratingChanged}
-                             value={index+1}
-                           size={24}
-                           isHalf={true} 
-                         activeColor="#ffd700"
-                  /></p>
-                  <button
+              <Link to={`/details/${prd.name}`}>
+                <div class="card">
+                  <img
                     style={{
                       width: "100%",
                       height: "20rem",
@@ -193,8 +154,8 @@ const Accessories = () => {
           );
         })}
       </div>
-      </div>
-  ) 
+    </div>
+  )
 };
 
 export default Accessories;
