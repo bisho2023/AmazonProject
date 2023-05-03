@@ -31,6 +31,7 @@ import CheckOut from "./pages/order/CheckOut";
 import Help from "./pages/help/help";
 import PageNotFound from "./pages/pagenotfound/pageNotFound";
 import { ToastContainer } from "react-toastify";
+import Userprofile from "./pages/userprofile/userprofile";
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
       <Routes>
      
         <Route path="/" element={<Home />} />
+        <Route path="/userprofile" element={<Userprofile />} />
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/clothing" element={<Clothing />} />
         <Route path="/computer" element={<Computer />} />

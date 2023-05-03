@@ -134,7 +134,10 @@ const Accessories = () => {
                       : `${prd.descriptionar}`}
                   </p>
                   <h3>
-                    {t("price")} {prd.price}
+                  
+                    {t("price")} {prd.price} <span>  {currentLanguageCode === "en"
+                      ? "LE"
+                      : "ج.م"}</span> 
                   </h3>
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
@@ -142,7 +145,7 @@ const Accessories = () => {
                              index={index}
                              count={5}
                              onChange={ratingChanged}
-                             value={index+1}
+                             value={prd.rate}
                            size={24}
                            isHalf={true} 
                          activeColor="#ffd700"
