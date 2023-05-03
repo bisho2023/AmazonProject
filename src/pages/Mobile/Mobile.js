@@ -2,19 +2,25 @@ import React, { useEffect, useState } from "react";
 import axioss from "../../axios/axios";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards, { changeCounter } from "../../store/action";
-import { collection, getDocs, orderBy, query, where } from "@firebase/firestore";
-import { db } from '../../firebase';
-
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import cookies from 'js-cookie';
+import {
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "@firebase/firestore";
+import { db } from "../../firebase";
+import "./moblie.css";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import cookies from "js-cookie";
 import ReactStars from "react-rating-stars-component";
+import { Link } from "react-router-dom";
 
 const Mobile = () => {
   const ratingChanged = (newRating) => {
     console.log(newRating);
-    alert(`the rating is ${newRating}`)
-
+    alert(`the rating is ${newRating}`);
   };
   //language
   const currentLanguageCode = cookies.get('i18next') || 'en'
@@ -35,15 +41,20 @@ const Mobile = () => {
     const q = query(productsRef, where("category", "==", "mobile"));
     const querySnapshot = await getDocs(q);
     const products = [];
-    querySnapshot.forEach((doc) => { products.push(doc.data()); });
+
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
     setMobile(products);
-  }
+  };
   const categoryRef = collection(db, "category");
   const fetchcat = async () => {
     const q = query(categoryRef, where("name", "==", "mobile"));
     const querySnapshot = await getDocs(q);
     const category = [];
-    querySnapshot.forEach((doc) => { category.push(doc.data()); });
+    querySnapshot.forEach((doc) => {
+      category.push(doc.data());
+    });
     console.log(category);
     setCategory(category);
   }
@@ -57,10 +68,11 @@ const Mobile = () => {
     setMobile(products);
   }
 
+
   useEffect(() => {
     fetchPost();
     fetchcat();
-  }, [])
+  }, []);
 
   // const handelChange = async (e) => {
   //   setSort(true)
@@ -76,7 +88,6 @@ const Mobile = () => {
 
   // const handelReset = () => { };
 
-
   return (
     <div className="container">
       <div className="row row-cols-1 row-cols-md-3 g-4">
@@ -91,8 +102,9 @@ const Mobile = () => {
                   alt="Card image cap"
                 />
               </div>
+
             </div>
-          )
+          );
         })}
         <div className="d-block w-100  mt-2">
           <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
@@ -103,65 +115,64 @@ const Mobile = () => {
           </select>
         </div>
 
+
         {Mobile.map((prd, index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
-              <div className="card">
-                <img
-                  style={{
-                    width: "100%",
-                    height: "20rem",
-                    objectFit: "contain",
-                  }}
-                  className="card-img-top"
-                  src={prd.image}
-                  alt="Card image cap"
-                />
 
                 <div className="card-body">
 
                   <h5 className="card-title">{currentLanguageCode === 'en' ? `${prd.name}` : `${prd.namear}`}</h5>
                   <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode === 'en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
                   <h3>{t("price")} {prd.price}</h3>
-
-                  {/* <h3>Rate : {prd.rating.rate}</h3> */}
-                  <p><ReactStars
-                    index={index}
-                    count={5}
-                    onChange={ratingChanged}
-                    value={index + 1}
-                    size={24}
-                    isHalf={true}
-                    activeColor="#ffd700"
-                  /></p>
-                  <button
+                  
+              <Link to={`/details/${prd.name}`}>
+                <div className="card">
+                  <img
                     style={{
-                      fontSize: "14px",
-                      borderWidth: "3px",
-                      borderRadius: "10px",
-                      borderStyle: "solid",
-                      padding: "0 20px 0 20px",
-                      marginTop: "1.2rem",
-                      marginLeft: "4rem",
-                      // position: "absolute",
-                      // left: "30%",
-                      // bottom: "0",
-                      // marginBottom: "1rem",
+                      width: "100%",
+                      height: "20rem",
+                      objectFit: "contain",
                     }}
-                    className="btn btn-warning"
-                    onClick={() => {
-                      dispatch(changeCards([...cards, prd]));
-                      dispatch(changeCounter(counter + 1));
-                    }}
-                  >
-                    {t("addcart")}
-                  </button>
+                    className="card-img-top"
+                    src={prd.image}
+                    alt="Card image cap"
+                  />
+
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      {currentLanguageCode === "en"
+                        ? `${prd.name}`
+                        : `${prd.namear}`}
+                    </h5>
+                    <p className="card-text">
+                      <strong> {t("description")}</strong>{" "}
+                      {currentLanguageCode === "en"
+                        ? `${prd.description}`
+                        : `${prd.descriptionar}`}
+                    </p>
+                    <h3>
+                      {t("price")} {prd.price}
+                    </h3>
+
+                    {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                    <p>
+                      <ReactStars
+                        index={index}
+                        count={5}
+                        onChange={ratingChanged}
+                        value={prd.rate}
+                        size={24}
+                        isHalf={true}
+                        activeColor="#ffd700"
+                      />
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           );
         })}
-
       </div>
       {/* <div className="row row-cols-1 row-cols-md-3 g-4">
             <div className="col-md-4 my-3">

@@ -4,9 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// import Logo from "../images/header-logo.png";
-// import searchIcon from "../images/icons/searchIcon.png";
-// import shoopingCart from "../images/icons/shopping-cart.png";
 import "./header.css";
 import { auth } from "../../firebase";
 import { useAuth } from "../../context/GlobalProvider";
@@ -156,6 +153,15 @@ const Header = () => {
         <div className="header-optionLineOne ">{t("your")}</div>
         <div className="header-optionLineTwo">{t("prim")}</div>
       </div>
+      {/* user profile */}
+      <Link  to={user ? "/userprofile" : "/login" }>
+        <button
+          className="btn btn-link"
+          type="button"
+        >
+          {/* <FaUser /> */}
+        </button>
+        </Link>
 
       <Link to="/cards">
         <div className="header-optionBasket">

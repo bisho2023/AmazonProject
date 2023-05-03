@@ -5,10 +5,16 @@ export default function changeCards(data) {
   };
 }
 
-
 export function changeCounter(data) {
   return {
     type: "SET_COUNTER",
+    payload: data,
+  };
+}
+
+export function changeQuantity(data) {
+  return {
+    type: "SET_QUANTITY",
     payload: data,
   };
 }
