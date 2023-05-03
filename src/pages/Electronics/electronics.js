@@ -59,6 +59,15 @@ const Electronics = () => {
     console.log(category);
     setCategory(category);
   };
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "mobile"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setElectronics(products);
+  }
 
   useEffect(() => {
     fetchPost();
@@ -82,6 +91,14 @@ const Electronics = () => {
             </div>
           );
         })}
+        <div className="d-block w-100  mt-2">
+          <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
+            <option className="bg-light "  >Filter by Price</option>
+            <option className="bg-light " value="50">less than 50</option>
+            <option className="bg-light " value="100">up to 50</option>
+            <option className="bg-light " value="9999999">up to 100</option>
+          </select>
+      </div>
         {Electronics.map((prd, index) => {
           return (
             <div class="col-md-4 my-3" key={index}>

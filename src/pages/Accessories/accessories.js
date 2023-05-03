@@ -66,6 +66,15 @@ const Accessories = () => {
     console.log(category);
     setCategory(category);
   };
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "accessory"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setaccessoriy(products);
+  }
 
   useEffect(() => {
     fetchPost();

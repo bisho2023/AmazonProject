@@ -24,12 +24,12 @@ const Grocery = () => {
 
   };
 
-  
-   const currentLanguageCode = cookies.get('i18next') || 'en'
-   const { t } = useTranslation();
- 
 
-   
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const { t } = useTranslation();
+
+
+
   const [grocery, setgrocery] = useState([]);
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
@@ -74,30 +74,45 @@ const Grocery = () => {
     fetchcat();
   }, []);
 
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "grocery"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setgrocery(products);
+  }
+
   return (
     <div className="container">
+      <div className="border color-success">
+        <select name="isAvailable" onChange={handelFilter}>
+          <option >Filter by Price</option>
+          <option value="50">less than 50</option>
+          <option value="100">up to 50</option>
+          <option value="9999999">up to 100</option>
+        </select>
+      </div>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {categories.map((cat, index) => {
           return (
             <div key={index} className="d-flex">
-
-             {/* <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
-
-              
-            <img
-              className="card-img-top w-50"
-              src={cat.image[1]}
-              alt="Card image cap"
-            />
-            <img
-              className="card-img-top w-50"
-              src={cat.image[index]}
-              alt="Card image cap"
-            />
+              <img
+                className="card-img-top w-50"
+                src={cat.image[1]}
+                alt="Card image cap"
+              />
+              <img
+                className="card-img-top w-50"
+                src={cat.image[index]}
+                alt="Card image cap"
+              />
 
             </div>
           );
         })}
+
         {grocery.map((prd, index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
@@ -115,21 +130,21 @@ const Grocery = () => {
 
                 <div className="card-body">
 
-                  <h5 className="card-title">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h5>
-                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <h5 className="card-title">{currentLanguageCode === 'en' ? `${prd.name}` : `${prd.namear}`}</h5>
+                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode === 'en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
                   <h3>{t("price")} {prd.price}</h3>
 
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <p><ReactStars
-                  index={index}
-                  count={5}
-                  onChange={ratingChanged}
-                  value={index+1}
-                size={24}
-                isHalf={true} 
-              activeColor="#ffd700"
-       /></p>
+                    index={index}
+                    count={5}
+                    onChange={ratingChanged}
+                    value={index + 1}
+                    size={24}
+                    isHalf={true}
+                    activeColor="#ffd700"
+                  /></p>
                   <button
                     style={{
                       fontSize: "14px",
@@ -153,7 +168,7 @@ const Grocery = () => {
                     {t("addcart")}
 
                   </button>
-                  
+
                 </div>
               </div>
             </div>

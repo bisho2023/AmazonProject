@@ -64,6 +64,15 @@ const Computer = () => {
     console.log(category);
     setCategory(category);
   };
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "computer"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setComputurs(products);
+  }
 
   useEffect(() => {
     fetchPost();
@@ -99,6 +108,14 @@ const Computer = () => {
             </div>
           );
         })}
+        <div className="d-block w-100  mt-2">
+          <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
+            <option className="bg-light "  >Filter by Price</option>
+            <option className="bg-light " value="50">less than 50</option>
+            <option className="bg-light " value="100">up to 50</option>
+            <option className="bg-light " value="9999999">up to 100</option>
+          </select>
+      </div>
         {Computurs.map((prd, index) => {
           return (
             <div class="col-md-4 my-3" key={index}>

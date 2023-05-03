@@ -31,6 +31,7 @@ import CheckOut from "./pages/order/CheckOut";
 import Help from "./pages/help/help";
 import PageNotFound from "./pages/pagenotfound/pageNotFound";
 import { ToastContainer } from "react-toastify";
+import OrderDetalis from "./pages/orderDetails/orderDetalis";
 
 
 function App() {
@@ -82,6 +83,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/checkout" element={<CheckOut />} />
         <Route path="/help" element={<Help/>}></Route>
+        <Route path="/order" element={<OrderDetalis/>}></Route>
         {/* <Route path="*" component={<PageNotFound/> } /> */}
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
