@@ -30,9 +30,13 @@ import CheckOut from "./pages/order/CheckOut";
 
 import Help from "./pages/help/help";
 import PageNotFound from "./pages/pagenotfound/pageNotFound";
-import { ToastContainer } from "react-toastify";
-import OrderDetalis from "./pages/orderDetails/orderDetalis";
+// import Userprofile from "./pages/userprofile/userprofile";
 
+
+// import PageNotFound from "./pages/pagenotfound/pageNotFound";
+import { ToastContainer } from "react-toastify";
+// import Details from "./pages/details/details";
+import OrderDetalis from "./pages/orderDetails/orderDetalis";
 
 function App() {
   const { dispatch } = useAuth();
@@ -68,6 +72,7 @@ function App() {
       <Routes>
      
         <Route path="/" element={<Home />} />
+        {/* <Route path="/userprofile" element={<Userprofile />} /> */}
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/clothing" element={<Clothing />} />
         <Route path="/computer" element={<Computer />} />
@@ -82,10 +87,13 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/checkout" element={<CheckOut />} />
-        <Route path="/help" element={<Help/>}></Route>
-        <Route path="/order" element={<OrderDetalis/>}></Route>
+        {/* <Route path="/details/:name" element={<Details />} /> */}
+        <Route path="/help" element={<Help />} />
+        <Route path="/order" element={<OrderDetalis />} />
         {/* <Route path="*" component={<PageNotFound/> } /> */}
+
         <Route path="/404" element={<PageNotFound />} />
+
         <Route path="*" element={<Navigate to="/404" />} />
       
       </Routes>
