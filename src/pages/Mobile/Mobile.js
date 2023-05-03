@@ -97,6 +97,7 @@ const Mobile = () => {
         {Mobile.map((prd, index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
+
               <Link to={`/details/${prd.name}`}>
                 <div className="card">
                   <img
@@ -132,7 +133,7 @@ const Mobile = () => {
                         index={index}
                         count={5}
                         onChange={ratingChanged}
-                        value={index + 1}
+                        value={prd.rate}
                         size={24}
                         isHalf={true}
                         activeColor="#ffd700"

@@ -86,6 +86,7 @@ const Electronics = () => {
               <Link to={`/details/${prd.name}`}>
                 <div class="card">
                   <img
+
                     style={{
                       width: "100%",
                       height: "20rem",
@@ -118,7 +119,7 @@ const Electronics = () => {
                         index={index}
                         count={5}
                         onChange={ratingChanged}
-                        value={index + 1}
+                        value={prd.rate}
                         size={24}
                         isHalf={true}
                         activeColor="#ffd700"

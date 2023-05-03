@@ -40,7 +40,7 @@ const Search = () => {
 
     return (
         <div className="container">
-            <div className="row row-cols-1 row-cols-md-3 g-4">
+            {searchdata == ""? <h1>Product Not Found</h1>:<div className="row row-cols-1 row-cols-md-3 g-4">
                 {searchdata.map((product, index) => (
                     <div className="col-md-4 my-3" key={index}>
                         <div className="card">
@@ -96,7 +96,8 @@ const Search = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div>}
+            
         </div>
     );
 };

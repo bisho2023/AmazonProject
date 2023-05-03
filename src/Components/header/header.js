@@ -15,6 +15,8 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookies from "js-cookie";
 
+import { FaUser } from 'react-icons/fa';
+
 const languages = [
   {
     code: "en",
@@ -156,6 +158,15 @@ const Header = () => {
         <div className="header-optionLineOne ">{t("your")}</div>
         <div className="header-optionLineTwo">{t("prim")}</div>
       </div>
+      {/* user profile */}
+      <Link  to={user ? "/userprofile" : "/login" }>
+        <button
+          className="btn btn-link"
+          type="button"
+        >
+          <FaUser />
+        </button>
+        </Link>
 
       <Link to="/cards">
         <div className="header-optionBasket">

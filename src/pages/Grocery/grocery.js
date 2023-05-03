@@ -89,6 +89,7 @@ const Grocery = () => {
         })}
         {grocery.map((prd, index) => {
           return (
+
             <div class="col-md-4 my-3" key={index}>
               <Link to={`/details/${prd.name}`}>
                 <div class="card">
@@ -125,7 +126,7 @@ const Grocery = () => {
                         index={index}
                         count={5}
                         onChange={ratingChanged}
-                        value={index + 1}
+                        value={prd.rate}
                         size={24}
                         isHalf={true}
                         activeColor="#ffd700"

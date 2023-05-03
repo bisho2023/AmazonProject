@@ -87,6 +87,7 @@ const Tv = () => {
         {TV.map((prd, index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
+
               <Link to={`/details/${prd.name}`}>
                 <div className="card">
                   <img
@@ -112,15 +113,15 @@ const Tv = () => {
                     {/* <h3>Rate : {prd.rating.rate}</h3> */}
 
                     <p>
-                      <ReactStars
-                        index={index}
-                        count={5}
-                        onChange={ratingChanged}
-                        value={index + 1}
-                        size={24}
-                        isHalf={true}
-                        activeColor="#ffd700"
-                      />
+                     <p><ReactStars
+                             index={index}
+                             count={5}
+                             onChange={ratingChanged}
+                             value={prd.rate}
+                           size={24}
+                           isHalf={true} 
+                         activeColor="#ffd700"
+                  /></p>
                     </p>
                   </div>
                 </div>
