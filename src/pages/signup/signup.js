@@ -117,7 +117,7 @@ export const Signup = () => {
             type="email"
             className="form-control"
             required
-            // pattern="/[a-zA-Z0-9]+@[a-zA-Z0-9-]+(?:\.com)"
+             pattern="[a-zA-Z0-9]+@[a-zA-Z0-9-]+(?:\.com)"
            
                
             onChange={(e) => setEmail(e.target.value)}
