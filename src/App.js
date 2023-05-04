@@ -25,7 +25,7 @@ import { Login } from "./pages/login/login";
 import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAuth } from "./context/GlobalProvider";
-import CheckOut from "./pages/order/CheckOut";
+// import CheckOut from "./pages/order/CheckOut";
 
 
 import Help from "./pages/help/help";
@@ -38,6 +38,7 @@ import Userprofile from "./pages/userprofile/userprofile";
 import { ToastContainer } from "react-toastify";
  import Details from "./pages/details/details";
 import OrderDetalis from "./pages/orderDetails/orderDetalis";
+import CheckOut from "./pages/order/CheckOut";
 
 
 function App() {

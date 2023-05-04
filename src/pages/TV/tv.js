@@ -108,7 +108,20 @@ const Tv = () => {
           );
         })}
         <div className="d-block w-100  mt-2">
-          <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
+          <select style={{
+                  fontSize: "14px",
+                  borderWidth: "3px",
+                  borderRadius: "10px",
+                  borderStyle: "solid",
+                  padding: "10px 20px 10px 20px",
+                  marginTop: "1.2rem",
+                  marginLeft: "4rem",
+                  // position: "absolute",
+                  // left: "30%",
+                  // bottom: "0",
+                  // marginBottom: "1rem",
+                }}
+                className="btn btn-warning" name="isAvailable" onChange={handelFilter}>
             <option className="bg-light "  >Filter by Price</option>
             <option className="bg-light " value="50">less than 50</option>
             <option className="bg-light " value="100">up to 50</option>
@@ -118,55 +131,55 @@ const Tv = () => {
       {TV.map((prd, index) => {
         return (
           <div className="col-md-4 my-3" key={index}>
-            <div className="card">
-              <img
-                className="card-img-top "
-                src={prd.image}
-                alt="Card image cap"
-              />
+
               <div className="card-body">
 
-                <h5 className="card-title">{currentLanguageCode === 'en' ? `${prd.name}` : `${prd.namear}`}</h5>
-                <p className="card-text"><strong> {t("description")}</strong>  {currentLanguageCode === 'en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
-                <h3>{t("price")} {prd.price}</h3>
-                {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                <Link to={`/details/${prd.name}`} style={{color:"black" , textDecoration:"none"}}>
+                  <div className="card">
+                    <img
+                      style={{
+                        width: "100%",
+                        height: "20rem",
+                        objectFit: "contain",
+                      }}
+                      className="card-img-top"
+                      src={prd.image}
+                      alt="Card image cap"
+                    />
 
-                <p><ReactStars
-                  index={index}
-                  count={5}
-                  onChange={ratingChanged}
-                  value={prd.rate}
-                  size={24}
-                  isHalf={true}
-                  activeColor="#ffd700"
-                /></p>
+                    <div className="card-body">
+                      <h5 className="card-title">
+                        {currentLanguageCode === "en"
+                          ? `${prd.name}`
+                          : `${prd.namear}`}
+                      </h5>
+                      <p className="card-text">
+                        <strong> {t("description")}</strong>{" "}
+                        {currentLanguageCode === "en"
+                          ? `${prd.description}`
+                          : `${prd.descriptionar}`}
+                      </p>
+                      <h3>{t("price")} {prd.price}  <span>  {currentLanguageCode === "en"
+                      ? "LE"
+                      : "ج.م"}</span> </h3>
 
-
-                <button
-                  style={{
-                    fontSize: "14px",
-                    borderWidth: "3px",
-                    borderRadius: "10px",
-                    borderStyle: "solid",
-                    padding: "0 20px 0 20px",
-                    marginTop: "1.2rem",
-                    marginLeft: "4rem",
-                    // position: "absolute",
-                    // left: "30%",
-                    // bottom: "0",
-                    // marginBottom: "1rem",
-                  }}
-                  className="btn btn-warning"
-                  onClick={() => {
-                    dispatch(changeCards([...cards, prd]));
-                    dispatch(changeCounter(counter + 1));
-                  }}
-                >
-                  {t("addcart")}
-                </button>
+                      {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                      <p>
+                        <ReactStars
+                          index={index}
+                          count={5}
+                          onChange={ratingChanged}
+                          value={prd.rate}
+                          size={24}
+                          isHalf={true}
+                          activeColor="#ffd700"
+                        />
+                      </p>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
-          </div>
         );
       })}
     </div>

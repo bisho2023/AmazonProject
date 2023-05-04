@@ -14,8 +14,14 @@ import edd from "../images/04.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards, { changeCounter } from "../../store/action";
 import { t } from "i18next";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Details = () => {
+    //language
+    const currentLanguageCode = Cookies.get("i18next") || "en";
+    const { t } = useTranslation();
+
   const { name } = useParams();
   const [product, setProduct] = useState([]);
   const productsRef = collection(db, "products");
@@ -49,11 +55,15 @@ const Details = () => {
               <img className="w-100" src={prd.image}></img>
             </div>
             <div className="col-md-4 ">
-              <h1 className="name">{prd.name}</h1>
-              <p className="lead desc">{prd.description}</p>
+              <h1 className="name">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h1>
+              <p className="lead desc">{currentLanguageCode === "en"
+                        ? `${prd.description}`
+                        : `${prd.descriptionar}`}</p>
               <p>
                 <strong>
-                  Price : <span className="price">${prd.price}</span>
+                <h3>{t("price")} {prd.price}  <span>  {currentLanguageCode === "en"
+                      ? "LE"
+                      : "ج.م"}</span> </h3>
                 </strong>
               </p>
             </div>
@@ -61,14 +71,21 @@ const Details = () => {
               <h1></h1>
               <p>
                 <strong>
-                  Price : <span className="price">${prd.price}</span>
+                {t("price")}  <span className="price">${prd.price}</span>
                 </strong>
               </p>
-              <a href="">FREE Returns </a> <br></br>
-              <a href="">FREE Returns </a> <strong>May 4-6</strong> <br></br>
-              <p>
-                Or fastest delivery Tomorrow, <br></br>May 4. Order within 22
-                hrs 33 mins
+              <a href="">{currentLanguageCode === "en"
+                      ? "FREE Returns"
+                      : "شحن مجاني"}  </a> <br></br>
+              <a href=""> {currentLanguageCode === "en"
+                      ? "FREE Returns "
+                      : "استرجاع مجاني"}</a> <strong>May 4-6</strong> <br></br>
+              <p>{currentLanguageCode === "en"
+                      ? "Or fastest delivery Tomorrow, "
+                      : "أو يمكنك الشحن السريع غدأ"}
+                 <br></br>{currentLanguageCode === "en"
+                      ? "May 4. Order within 22 hrs 33 mins"
+                      : "الوصول غدا بعد 22 ساعه من الان"} 
               </p>
               <button
                 style={{
@@ -93,20 +110,32 @@ const Details = () => {
                 {t("addcart")}
               </button>
               <div className="row mt-3">
-                <div className="col-sm-6 pp">Payment</div>
+                <div className="col-sm-6 pp">{currentLanguageCode === "en"
+                      ? "Payment"
+                      : "طريقه الدفع"}</div>
                 <div className="col-sm-6 ">
                   <a href="" className="l">
-                    Secure transaction
+                  {currentLanguageCode === "en"
+                      ? "Secure transaction "
+                      : "عند الاستلام"}
                   </a>
                 </div>
               </div>
               <div className="row">
-                <div className="col-sm-6 pp">Ships from</div>
-                <div className="col-sm-6">Amazon.eg</div>
+                <div className="col-sm-6 pp">{currentLanguageCode === "en"
+                      ? "Ships from "
+                      :"الشحن من"}</div>
+                <div className="col-sm-6">{currentLanguageCode === "en"
+                      ? "Amazon.eg "
+                      : "امازون"}</div>
               </div>
               <div className="row">
-                <div className="col-sm-6 pp">Sold by</div>
-                <div className="col-sm-6">Amazon.eg</div>
+                <div className="col-sm-6 pp">{currentLanguageCode === "en"
+                      ? "Sold by"
+                      : "البائع"}</div>
+                <div className="col-sm-6">{currentLanguageCode === "en"
+                      ? "Amazon.eg "
+                      : "امازون"}</div>
               </div>
             </div>
           </div>

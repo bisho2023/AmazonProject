@@ -104,7 +104,20 @@ const Clothing = () => {
           );
         })}
         <div className="d-block w-100  mt-2">
-          <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
+          <select style={{
+                  fontSize: "14px",
+                  borderWidth: "3px",
+                  borderRadius: "10px",
+                  borderStyle: "solid",
+                  padding: "10px 20px 10px 20px",
+                  marginTop: "1.2rem",
+                  marginLeft: "4rem",
+                  // position: "absolute",
+                  // left: "30%",
+                  // bottom: "0",
+                  // marginBottom: "1rem",
+                }}
+                className="btn btn-warning" name="isAvailable" onChange={handelFilter}>
             <option className="bg-light "  >Filter by Price</option>
             <option className="bg-light " value="50">less than 50</option>
             <option className="bg-light " value="100">up to 50</option>
@@ -115,7 +128,7 @@ const Clothing = () => {
           return (
             <div class="col-md-4 my-3" key={index}>
 
-              <Link to={`/details/${prd.name}`}>
+              <Link to={`/details/${prd.name}`} style={{color:"black" , textDecoration:"none"}}>
                 <div class="card">
                   <img
                     style={{
@@ -140,9 +153,9 @@ const Clothing = () => {
                         ? `${prd.description}`
                         : `${prd.descriptionar}`}
                     </p>
-                    <h3>
-                      {t("price")} {prd.price}
-                    </h3>
+                    <h3>{t("price")} {prd.price}  <span>  {currentLanguageCode === "en"
+                      ? "LE"
+                      : "ج.م"}</span> </h3>
 
                     {/* <h3>Rate : {prd.rating.rate}</h3> */}
                     <p>

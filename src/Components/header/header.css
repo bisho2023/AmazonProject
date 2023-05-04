@@ -71,12 +71,12 @@
   margin-left: 1rem;
 }
 .card a{
-  color: rgb(16, 50, 244);
+  /* color: rgb(16, 50, 244); */
   text-decoration: none;
 }
 .card a:hover{
   color: rgb(252, 14, 65);
-  text-decoration:underline ;
+  /* text-decoration:underline ; */
 }
 .card:hover{
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;

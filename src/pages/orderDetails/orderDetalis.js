@@ -74,7 +74,7 @@ const OrderDetalis = () => {
             className="h-100 gradient-custom"
             style={{ backgroundColor: "#eee" }}
         >
-            <h1>{"  "}.
+            <h1>{"  "}
             
             </h1>
             { orderDetails.map((order, index) => {

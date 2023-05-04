@@ -86,7 +86,7 @@ const Accessories = () => {
       <div class="row row-cols-1 row-cols-md-3 g-1 d-flex align-items-stretch position-relative">
         {categories.map((cat, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="w-100">
               <h1>
                 {currentLanguageCode === "en" ? `${cat.name}` : `${cat.namear}`}
               </h1>
@@ -98,11 +98,32 @@ const Accessories = () => {
             </div>
           );
         })}
+        <div className="d-block w-100 mt-2">
+          <select style={{
+                  fontSize: "14px",
+                  borderWidth: "3px",
+                  borderRadius: "10px",
+                  borderStyle: "solid",
+                  padding: "10px 20px 10px 20px",
+                  marginTop: "1.2rem",
+                  marginLeft: "4rem",
+                  // position: "absolute",
+                  // left: "30%",
+                  // bottom: "0",
+                  // marginBottom: "1rem",
+                }}
+                className="btn btn-warning" name="isAvailable" onChange={handelFilter}>
+            <option className="bg-light "  >Filter by Price</option>
+            <option className="bg-light " value="50">less than 50</option>
+            <option className="bg-light " value="100">up to 50</option>
+            <option className="bg-light " value="9999999">up to 100</option>
+          </select>
+        </div>
         {accessoriy.map((prd, index) => {
           return (
             <div class="col-md-4 my-3" key={index}>
 
-              <Link to={`/details/${prd.name}`}>
+              <Link to={`/details/${prd.name}`} style={{color:"black" , textDecoration:"none"}}>
                 <div class="card">
                   <img
                     style={{
@@ -127,9 +148,9 @@ const Accessories = () => {
                         ? `${prd.description}`
                         : `${prd.descriptionar}`}
                     </p>
-                    <h3>
-                      {t("price")} {prd.price}
-                    </h3>
+                    <h3>{t("price")} {prd.price}  <span>  {currentLanguageCode === "en"
+                      ? "LE"
+                      : "ج.م"}</span> </h3>
 
                     {/* <h3>Rate : {prd.rating.rate}</h3> */}
 

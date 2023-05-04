@@ -178,6 +178,7 @@ const CheckOut = () => {
                                                 const details = await action.order.capture();
                                                 alert("Transaction is completed");
                                                 handelOrder();
+                                                navigate("/order")
                                                 
                                             }} />
                                     </PayPalScriptProvider>
